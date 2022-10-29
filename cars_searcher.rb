@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'date'
+
 class CarsSearcher
   attr_accessor :data
 
@@ -75,7 +77,7 @@ class CarsSearcher
   def sort_options
     puts 'Please choose sort option (date_added|price):'
     result = gets.chomp
-    result == 'price' ? data.sort_by! { |key| key['price'] } : data.sort_by! { |key| key['date_added'] }
+    result == 'price' ? data.sort_by! { |key| key['price'] } : data.sort_by! { |key| Date.strptime(key['date_added'], '%d/%m/%Y') }
   end
 
   def sort_direction
