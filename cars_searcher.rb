@@ -33,7 +33,7 @@ class CarsSearcher
     if make.strip.empty?
       return
     end
-
+  
     data.keep_if { |car| car['make'].downcase == make.downcase }
   end
 

@@ -40,7 +40,6 @@ class StatisticsManager
     search_element['total_quantity'] = total_quantity
 
     database << search_element
-    database_file.record(database)
   end
 
   def show_statistic
