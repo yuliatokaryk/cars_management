@@ -26,7 +26,9 @@ class CarsSearcher
     puts 'Please choose make:'
     make = gets.chomp
 
-    return if make.strip.empty?
+    if make.strip.empty?
+      return
+    end
 
     data.keep_if { |car| car['make'].downcase == make.downcase }
   end
@@ -35,7 +37,9 @@ class CarsSearcher
     puts 'Please choose model:'
     model = gets.chomp
 
-    return if model.strip.empty?
+    if model.strip.empty?
+      return
+    end
 
     data.keep_if { |car| car['model'].downcase == model.downcase }
   end
@@ -46,7 +50,9 @@ class CarsSearcher
     puts 'Please choose year_to:'
     year_to = gets.chomp
 
-    return if year_from.strip.empty? && year_to.strip.empty?
+    if year_from.strip.empty? && year_to.strip.empty?
+      return
+    end
 
     if year_from.strip.empty?
       data.keep_if { |car| car['year'] <= year_to.to_i }
@@ -63,7 +69,9 @@ class CarsSearcher
     puts 'Please choose price_to:'
     price_to = gets.chomp
 
-    return if price_from.strip.empty? && price_to.strip.empty?
+    if price_from.strip.empty? && price_to.strip.empty?
+      return
+    end
 
     if price_from.strip.empty?
       data.keep_if { |car| car['price'] <=  price_to.to_i }
