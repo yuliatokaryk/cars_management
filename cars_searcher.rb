@@ -19,7 +19,7 @@ class CarsSearcher
     choose_price
     sort_options
     sort_direction
-    statistics
+    update_statistics
     show_result
   end
 
@@ -33,7 +33,7 @@ class CarsSearcher
     if make.strip.empty?
       return
     end
-  
+
     data.keep_if { |car| car['make'].downcase == make.downcase }
   end
 
@@ -60,7 +60,7 @@ class CarsSearcher
     if year_from.strip.empty? && year_to.strip.empty?
       return
     end
-    
+
     if year_from.strip.empty?
       data.keep_if { |car| car['year'] <= year_to.to_i }
     elsif year_to.strip.empty?
@@ -103,7 +103,7 @@ class CarsSearcher
     data.reverse! unless result == 'asc'
   end
 
-  def statistics
+  def update_statistics
     StatisticsManager.new(search_rules, data.length).call
   end
 
