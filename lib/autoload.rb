@@ -1,0 +1,7 @@
+require 'yaml'
+require 'date'
+require_relative 'statistics_manager'
+require_relative 'printer'
+require_relative 'receiver'
+require_relative 'database'
+require_relative 'cars_searcher'

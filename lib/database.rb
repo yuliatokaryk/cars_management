@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-
-require 'yaml'
-
 class Database
   attr_accessor :database_file
 

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require 'yaml'
-require_relative 'cars_searcher'
+require_relative 'lib/autoload'
 
-data = YAML.load_file 'cars.yml'
-
-searcher = CarsSearcher.new(data)
+searcher = CarsSearcher.new($data)
 searcher.call
