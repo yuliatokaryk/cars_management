@@ -1,5 +1,5 @@
 class Printer
-  def print_out(message)
+  def call(message)
     puts message
   end
 end

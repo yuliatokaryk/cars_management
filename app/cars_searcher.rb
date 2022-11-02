@@ -1,15 +1,16 @@
 class CarsSearcher
-  attr_accessor :data, :search_rules, :output, :inputer
+  attr_accessor :data, :search_rules, :output
+  attr_reader :receiver, :printer
 
   def initialize(data)
     @data = data
     @search_rules = {}
-    @output = Printer.new
-    @inputer = Receiver.new
+    @printer = Printer.new
+    @receiver = Receiver.new
   end
 
   def call
-    output.print_out('Please select search rules.')
+    printer.call('Please select search rules.')
     general_choosing('make')
     general_choosing('model')
     range_determining('year_from', 'year_to')
@@ -23,8 +24,8 @@ class CarsSearcher
   private
 
   def general_choosing(rule_name)
-    output.print_out("Please choose #{rule_name}:")
-    option = inputer.receive_input
+    printer.call("Please choose #{rule_name}:")
+    option = receiver.call
     search_rules["#{rule_name}"] = option
 
     return if option.strip.empty?
@@ -33,16 +34,14 @@ class CarsSearcher
   end
 
   def range_determining(rule_from, rule_to)
-    output.print_out("Please choose #{rule_from}:")
-    range_from = inputer.receive_input
+    printer.call("Please choose #{rule_from}:")
+    range_from = receiver.call
     search_rules["#{rule_from}"] = range_from
-    output.print_out("Please choose #{rule_to}:")
-    range_to = inputer.receive_input
+    printer.call("Please choose #{rule_to}:")
+    range_to = receiver.call
     search_rules["#{rule_to}"] = range_to
 
-    if range_from.strip.empty? && range_to.strip.empty?
-      return
-    end
+    return if range_from.strip.empty? && range_to.strip.empty?
 
     if range_from.strip.empty?
       data.keep_if { |car| car['year'] <= range_to.to_i }
@@ -54,14 +53,14 @@ class CarsSearcher
   end
 
   def sort_options
-    output.print_out('Please choose sort option (date_added|price):')
-    result = inputer.receive_input
+    printer.call('Please choose sort option (date_added|price):')
+    result = receiver.call
     result == 'price' ? data.sort_by! { |key| key['price'] } : data.sort_by! { |key| Date.strptime(key['date_added'], '%d/%m/%Y') }
   end
 
   def sort_direction
-    output.print_out('Please choose sort option (desc|asc):')
-    result = inputer.receive_input
+    printer.call('Please choose sort option (desc|asc):')
+    result = receiver.call
     data.reverse! unless result == 'asc'
   end
 
@@ -70,13 +69,13 @@ class CarsSearcher
   end
 
   def show_result
-    output.print_out("---------------------------------------\nResults:")
+    printer.call("---------------------------------------\nResults:")
     if data.empty?
-      output.print_out('Sorry, there no results')
+      printer.call('Sorry, there no results')
     else
       data.each do |car|
         car.each { |key, value| puts "#{key}: #{value}" }
-        output.print_out('---------------------------------------')
+        printer.call('---------------------------------------')
       end
     end
   end

@@ -1,5 +1,5 @@
 class Receiver
-  def receive_input
+  def call
     gets.chomp
   end
 end

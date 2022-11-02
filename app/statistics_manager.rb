@@ -1,14 +1,15 @@
-$data = YAML.load_file 'cars.yml' 
+$data = YAML.load_file 'db/cars.yml' 
 
 class StatisticsManager
-  attr_accessor :params, :total_quantity, :database_file, :database, :search_element, :output
+  attr_accessor :params, :total_quantity, :database_file, :database, :search_element
+  attr_reader :printer
 
   def initialize(params, total_quantity)
     @params = params
     @total_quantity = total_quantity
     @database_file = Database.new('searches')
     @database = database_file.fetch
-    @output = Printer.new
+    @printer = Printer.new
   end
 
   def call
@@ -42,6 +43,6 @@ class StatisticsManager
   end
 
   def show_statistic
-    output.print_out("---------------------------------------\nStatistic:\nTotal Quantity: #{search_element['total_quantity']}\nRequests quantity: #{search_element['requests_quantity']}")
+    printer.call("---------------------------------------\nStatistic:\nTotal Quantity: #{search_element['total_quantity']}\nRequests quantity: #{search_element['requests_quantity']}")
   end
 end
