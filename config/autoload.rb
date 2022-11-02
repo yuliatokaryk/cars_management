@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'yaml'
 require 'date'
 require_relative '../app/statistics_manager'

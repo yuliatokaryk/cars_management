@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Database
   attr_accessor :database_file
 
   def initialize(database_name)
     @database_file = "db/#{database_name}.yml"
     return fetch if File.exists?(database_file)
-    File.new("db/#{database_file}", 'w+')
+    File.new("#{database_file}", 'w+')
   end
 
   def record(modifyded_data)

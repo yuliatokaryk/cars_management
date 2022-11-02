@@ -1,4 +1,4 @@
-$data = YAML.load_file 'db/cars.yml' 
+# frozen_string_literal: true
 
 class StatisticsManager
   attr_accessor :params, :total_quantity, :database_file, :database, :search_element

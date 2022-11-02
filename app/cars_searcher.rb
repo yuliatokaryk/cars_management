@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class CarsSearcher
-  attr_accessor :data, :search_rules, :output
+  attr_accessor :data, :search_rules
   attr_reader :receiver, :printer
 
-  def initialize(data)
-    @data = data
+  def initialize
+    @data = Database.new('cars').fetch
     @search_rules = {}
     @printer = Printer.new
     @receiver = Receiver.new
@@ -70,13 +72,11 @@ class CarsSearcher
 
   def show_result
     printer.call("---------------------------------------\nResults:")
-    if data.empty?
-      printer.call('Sorry, there no results')
-    else
-      data.each do |car|
-        car.each { |key, value| puts "#{key}: #{value}" }
-        printer.call('---------------------------------------')
-      end
+    return printer.call('Sorry, there no results') if data.empty?
+    
+    data.each do |car|
+      car.each { |key, value| puts "#{key}: #{value}" }
+      printer.call('---------------------------------------')
     end
   end
 end
