@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 require 'date'
+require_relative 'statistics_manager'
 
 class CarsSearcher
-  attr_accessor :data
+  attr_accessor :data, :search_rules
 
   def initialize(data)
     @data = data
+    @search_rules = {}
   end
 
   def call
@@ -17,6 +19,7 @@ class CarsSearcher
     choose_price
     sort_options
     sort_direction
+    update_statistics
     show_result
   end
 
@@ -25,6 +28,7 @@ class CarsSearcher
   def choose_make
     puts 'Please choose make:'
     make = gets.chomp
+    search_rules["make"] = make
 
     if make.strip.empty?
       return
@@ -36,6 +40,7 @@ class CarsSearcher
   def choose_model
     puts 'Please choose model:'
     model = gets.chomp
+    search_rules["model"] = model
 
     if model.strip.empty?
       return
@@ -47,8 +52,10 @@ class CarsSearcher
   def choose_year
     puts 'Please choose year_from:'
     year_from = gets.chomp
+    search_rules["year_from"] = year_from
     puts 'Please choose year_to:'
     year_to = gets.chomp
+    search_rules["year_to"] = year_to
 
     if year_from.strip.empty? && year_to.strip.empty?
       return
@@ -66,8 +73,10 @@ class CarsSearcher
   def choose_price
     puts 'Please choose price_from:'
     price_from = gets.chomp
+    search_rules["price_from"] = price_from
     puts 'Please choose price_to:'
     price_to = gets.chomp
+    search_rules["price_to"] = price_to
 
     if price_from.strip.empty? && price_to.strip.empty?
       return
@@ -92,6 +101,10 @@ class CarsSearcher
     puts 'Please choose sort option (desc|asc):'
     result = gets.chomp
     data.reverse! unless result == 'asc'
+  end
+
+  def update_statistics
+    StatisticsManager.new(search_rules, data.length).call
   end
 
   def show_result
