@@ -1,28 +1,25 @@
 # frozen_string_literal: true
 
 class StatisticsManager
-  attr_accessor :params, :total_quantity, :database_file, :database, :search_element
-  attr_reader :printer
+  attr_accessor :db_file, :db, :rules, :total_quantity, :search_element
 
-  def initialize(params, total_quantity)
-    @params = params
+  def initialize(db, rules, total_quantity)
+    @db_file = db
+    @db = db_file.fetch
+    @rules = rules
     @total_quantity = total_quantity
-    @database_file = Database.new('searches')
-    @database = database_file.fetch
-    @printer = Printer.new
   end
 
   def call
     update_statistics
     save_data_in_db
-    show_statistic
   end
 
   private
 
   def update_statistics
-    @search_element = database.find { |element| element['params'] == params }
-    
+    @search_element = db.find { |search_request| search_request['params'] == rules }
+
     return add_new_search_element unless search_element
 
     search_element['total_quantity'] = total_quantity
@@ -30,19 +27,15 @@ class StatisticsManager
   end
 
   def save_data_in_db
-    database_file.record(database)
+    db_file.record(db)
   end
 
   def add_new_search_element
     @search_element = {}
-    search_element['params'] = params
+    search_element['params'] = rules
     search_element['requests_quantity'] = 1
     search_element['total_quantity'] = total_quantity
 
-    database << search_element
-  end
-
-  def show_statistic
-    printer.call("---------------------------------------\nStatistic:\nTotal Quantity: #{search_element['total_quantity']}\nRequests quantity: #{search_element['requests_quantity']}")
+    db << search_element
   end
 end
