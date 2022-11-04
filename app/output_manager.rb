@@ -16,19 +16,27 @@ class OutputManager
   private 
 
   def show_results
-    puts "---------------------------------------\nResults:"
-    return puts 'Sorry, there no results' if results.empty?
+    rows = []
 
-    results.each do |car|
-      car.each { |key, value| puts "#{key}: #{value}" }
-      puts '---------------------------------------'
+    if results.empty?
+      rows << ["#{I18n.t(:result_fail)}".colorize(:red)]
+    else
+      results.each do |car|
+        car.each { |parameter, value| rows << ["#{parameter}", "#{value}".colorize(:blue)] }
+        rows << :separator if results.last != car 
+      end
     end
+
+    table = Terminal::Table.new :title => "#{I18n.t(:result_title)}".colorize(:green), :rows => rows
+    puts table
   end
 
   def show_statistic
-    puts "Statistic:\n"\
-         "Total Quantity: #{statistic['total_quantity']}\n"\
-         "Requests quantity: #{statistic['requests_quantity']}\n"\
-         "---------------------------------------"
+    rows = []
+    rows << ["#{I18n.t(:total_quantity)}:", "#{statistic['total_quantity']}"]
+    rows << :separator
+    rows << ["#{I18n.t(:requests_quantity)}:", "#{statistic['requests_quantity']}"]
+    table = Terminal::Table.new :title => "#{I18n.t(:statistic_title)}".colorize(:green), :rows => rows
+    puts table
   end
 end

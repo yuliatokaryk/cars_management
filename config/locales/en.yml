@@ -1,0 +1,17 @@
+en:
+  rules_beginning: Please select search rules.
+  choose_request: Pleace choose
+  sort_request: Please choose sort
+  make: make
+  model: model
+  year_from: year_from
+  year_to: year_to
+  price_from: price_from
+  price_to: price_to
+  option: option(date_added|price)
+  direction: direction(desc|asc)
+  result_title: Results
+  statistic_title: Statistic
+  total_quantity: Total Quantity
+  requests_quantity: Requests Quantity
+  result_fail: Sorry, there no results
