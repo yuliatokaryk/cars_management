@@ -19,6 +19,11 @@ git clone git@github.com:yuliatokaryk/cars_management.git
 cd cars_management
 ```
 
+# Install the dependencies specified in Gemfile
+```bash
+bundle install
+```
+
 # Run the app
 
 ```bash
