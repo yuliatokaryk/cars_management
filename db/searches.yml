@@ -1,28 +1,10 @@
 ---
 - params:
-    make: bmw
-    model: x5
-    year_from: '2010'
-    year_to: '2020'
-    price_from: '1000'
-    price_to: '300000'
-  requests_quantity: 1
-  total_quantity: 14
-- params:
-    make: bmw
-    model: x5
-    year_from: '2010'
-    year_to: '2020'
-    price_from: ''
-    price_to: ''
-  requests_quantity: 1
-  total_quantity: 14
-- params:
     make: ''
     model: ''
     year_from: ''
     year_to: ''
     price_from: ''
     price_to: ''
-  requests_quantity: 2
+  requests_quantity: 6
   total_quantity: 14

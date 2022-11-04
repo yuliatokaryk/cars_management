@@ -3,8 +3,8 @@
 class InputCollector
   attr_accessor :rules, :sort_options
 
-  PARAMETERS = ['make', 'model', 'year_from', 'year_to', 'price_from', 'price_to']
-  SORTING = ['sort option(date_added|price)', 'sort direction(desc|asc)']
+  SEARCH_PARAMETERS = ['make', 'model', 'year_from', 'year_to', 'price_from', 'price_to']
+  SORT_PARAMETERS = ['option(date_added|price)', 'direction(desc|asc)']
 
   def initialize
     @rules = {}
@@ -19,16 +19,17 @@ class InputCollector
   private
 
   def rules_collector
-    PARAMETERS.each do |rule|
-      Printer.new.call("Please choose #{rule}:")
-      rules[rule] = Receiver.new.call
+    puts "Please select search rules."
+    SEARCH_PARAMETERS.each do |search_parameter|
+      puts "Please choose #{search_parameter}:"
+      rules[search_parameter] = gets.chomp
     end
   end
 
   def sort_options_collector
-    SORTING.each do |sort_option|
-      Printer.new.call("Please choose #{sort_option}:")
-      sort_options[sort_option] = Receiver.new.call
+    SORT_PARAMETERS.each do |sort_parameter|
+      puts "Please choose sort #{sort_parameter}:"
+      sort_options[sort_parameter] = gets.chomp
     end
   end
 end

@@ -16,16 +16,19 @@ class OutputManager
   private 
 
   def show_results
-    Printer.new.call("---------------------------------------\nResults:")
-    return Printer.new.call('Sorry, there no results') if results.empty?
+    puts "---------------------------------------\nResults:"
+    return puts 'Sorry, there no results' if results.empty?
 
     results.each do |car|
       car.each { |key, value| puts "#{key}: #{value}" }
-      Printer.new.call('---------------------------------------')
+      puts '---------------------------------------'
     end
   end
 
   def show_statistic
-    Printer.new.call("Statistic:\nTotal Quantity: #{statistic['total_quantity']}\nRequests quantity: #{statistic['requests_quantity']}\n---------------------------------------")
+    puts "Statistic:\n"\
+         "Total Quantity: #{statistic['total_quantity']}\n"\
+         "Requests quantity: #{statistic['requests_quantity']}\n"\
+         "---------------------------------------"
   end
 end
