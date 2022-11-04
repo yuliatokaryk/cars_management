@@ -19,7 +19,7 @@ class OutputManager
     rows = []
 
     if results.empty?
-      rows << ["#{I18n.t(:result_fail)}".colorize(:red)]
+      rows << ["#{I18n.t(:'result_output.result_fail')}".colorize(:red)]
     else
       results.each do |car|
         car.each { |parameter, value| rows << ["#{parameter}", "#{value}".colorize(:blue)] }
@@ -27,16 +27,16 @@ class OutputManager
       end
     end
 
-    table = Terminal::Table.new :title => "#{I18n.t(:result_title)}".colorize(:green), :rows => rows
+    table = Terminal::Table.new :title => "#{I18n.t(:'result_output.result_title')}".colorize(:green), :rows => rows
     puts table
   end
 
   def show_statistic
     rows = []
-    rows << ["#{I18n.t(:total_quantity)}:", "#{statistic['total_quantity']}"]
+    rows << ["#{I18n.t(:'result_output.total_quantity')}:", "#{statistic['total_quantity']}"]
     rows << :separator
-    rows << ["#{I18n.t(:requests_quantity)}:", "#{statistic['requests_quantity']}"]
-    table = Terminal::Table.new :title => "#{I18n.t(:statistic_title)}".colorize(:green), :rows => rows
+    rows << ["#{I18n.t(:'result_output.requests_quantity')}:", "#{statistic['requests_quantity']}"]
+    table = Terminal::Table.new :title => "#{I18n.t(:'result_output.statistic_title')}".colorize(:green), :rows => rows
     puts table
   end
 end

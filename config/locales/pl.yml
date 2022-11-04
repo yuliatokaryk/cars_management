@@ -1,0 +1,21 @@
+pl:
+  general:
+    rules_beginning: Wybierz kryteria wyszukiwania.
+    choose_request: Proszę wybrać
+    sort_request: Proszę wybrać
+  cars_params:
+    make: markę
+    model: model
+    year_from: od którego roku
+    year_to: do którego roku
+    price_from: cenę minimalną
+    price_to: cenę maksymalną
+  sort_params:
+    option: metodę sortowania('date_added' - według daty |'price' - według ceny)
+    direction: sortowania ('desc'|'asc')
+  result_output:
+    result_title: Wyniki wyszukiwania
+    statistic_title: Statystyki wyszukiwania
+    total_quantity: Liczba wyników wyszukiwania
+    requests_quantity: Liczba wyszukiwań według określonych parametrów
+    result_fail: Przepraszamy, brak wyników z podanymi parametrami

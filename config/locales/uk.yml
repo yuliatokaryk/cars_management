@@ -1,17 +1,21 @@
 uk:
-  rules_beginning: Будь ласка, оберіть правила пошуку.
-  choose_request: Будь ласка, оберіть
-  sort_request: Будь ласка, оберіть
-  make: марку
-  model: модель
-  year_from: від якого року
-  year_to: до якого року
-  price_from: мінімальну ціну
-  price_to: максимальну ціну
-  option: спосіб сортування('date_added' - за датою |'price' - за ціною)
-  direction: прядок сортування('desc' -зростаючий |'asc' - спадаючий)
-  result_title: Результати пошуку
-  statistic_title: Статистика пошуку
-  total_quantity: Кількість результатів пошуку
-  requests_quantity: Кількість пошуків за заданими параметрами
-  result_fail: Вибачте, немає результатів з заданими пареметрами
+  general:
+    rules_beginning: Будь ласка, оберіть правила пошуку.
+    choose_request: Будь ласка, оберіть
+    sort_request: Будь ласка, оберіть
+  cars_params:
+    make: марку
+    model: модель
+    year_from: від якого року
+    year_to: до якого року
+    price_from: мінімальну ціну
+    price_to: максимальну ціну
+  sort_params:
+    option: спосіб сортування('date_added' - за датою |'price' - за ціною)
+    direction: порядок сортування('desc' - зростаючий |'asc' - спадаючий)
+  result_output:
+    result_title: Результати пошуку
+    statistic_title: Статистика пошуку
+    total_quantity: Кількість результатів пошуку
+    requests_quantity: Кількість пошуків за заданими параметрами
+    result_fail: Вибачте, немає результатів з заданими параметрами
