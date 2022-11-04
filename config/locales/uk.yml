@@ -1,15 +1,21 @@
 uk:
   general:
     rules_beginning: Будь ласка, оберіть правила пошуку.
-    choose_request: Будь ласка, оберіть
+    choose_request: Будь ласка, оберіть - 
     sort_request: Будь ласка, оберіть
   cars_params:
-    make: марку
+    id: id
+    make: марка
     model: модель
     year_from: від якого року
     year_to: до якого року
     price_from: мінімальну ціну
     price_to: максимальну ціну
+    year: рік
+    odometer: пробіг
+    price: ціна
+    description: опис
+    date_added: дата додання
   sort_params:
     option: спосіб сортування('date_added' - за датою |'price' - за ціною)
     direction: порядок сортування('desc' - зростаючий |'asc' - спадаючий)

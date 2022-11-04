@@ -6,7 +6,7 @@
     year_to: ''
     price_from: ''
     price_to: ''
-  requests_quantity: 6
+  requests_quantity: 7
   total_quantity: 14
 - params:
     make: bmw
@@ -15,5 +15,5 @@
     year_to: ''
     price_from: ''
     price_to: ''
-  requests_quantity: 1
+  requests_quantity: 2
   total_quantity: 2

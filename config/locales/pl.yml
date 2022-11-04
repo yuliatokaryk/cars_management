@@ -4,12 +4,18 @@ pl:
     choose_request: Proszę wybrać
     sort_request: Proszę wybrać
   cars_params:
+    id: id
     make: markę
     model: model
     year_from: od którego roku
     year_to: do którego roku
     price_from: cenę minimalną
     price_to: cenę maksymalną
+    year: rok
+    odometer: odometer
+    price: cena
+    description: opis
+    date_added: data
   sort_params:
     option: metodę sortowania('date_added' - według daty |'price' - według ceny)
     direction: sortowania ('desc'|'asc')

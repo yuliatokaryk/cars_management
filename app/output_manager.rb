@@ -22,7 +22,7 @@ class OutputManager
       rows << ["#{I18n.t(:'result_output.result_fail')}".colorize(:red)]
     else
       results.each do |car|
-        car.each { |parameter, value| rows << ["#{parameter}", "#{value}".colorize(:blue)] }
+        car.each { |parameter, value| rows << ["#{I18n.t(:"cars_params.#{parameter}")}", "#{value}".colorize(:blue)] }
         rows << :separator if results.last != car 
       end
     end
