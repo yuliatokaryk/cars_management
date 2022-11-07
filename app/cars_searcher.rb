@@ -36,8 +36,8 @@ class CarsSearcher
     end
   end
 
-  def str_cheker(str)
-    str.strip.empty?
+  def str_checker(user_input)
+    user_input.strip.empty?
   end
 
   def count_total_quantity
