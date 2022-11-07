@@ -19,17 +19,17 @@ class CarsSearcher
   private
 
   def general_choosing(rule_name)
-    return if str_cheker(search_rules[rule_name])
+    return if str_checker(search_rules[rule_name])
 
     @cars_list.keep_if { |car| car[rule_name].downcase == search_rules[rule_name].downcase }
   end
 
   def range_determining(rule_from, rule_to)
-    return if str_cheker(search_rules[rule_from]) && str_cheker(search_rules[rule_to])
+    return if str_checker(search_rules[rule_from]) && str_checker(search_rules[rule_to])
 
-    if str_cheker(search_rules[rule_from])
+    if str_checker(search_rules[rule_from])
       @cars_list.keep_if { |car| car['year'] <= search_rules[rule_to].to_i }
-    elsif str_cheker(search_rules[rule_to])
+    elsif str_checker(search_rules[rule_to])
       @cars_list.keep_if { |car| car['year'] >= search_rules[rule_from].to_i }
     else
       @cars_list.keep_if { |car| (search_rules[rule_from].to_i..search_rules[rule_to].to_i).cover?(car['year']) }
