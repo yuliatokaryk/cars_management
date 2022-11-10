@@ -10,22 +10,27 @@ class OutputManager
   end
 
   def call
-    console_output(show_results)
+    console_output(result_finder)
     console_output(show_statistic)
   end
 
   private
 
+  def result_finder
+    results.empty? ? show_message : show_results
+  end
+
+  def show_message
+    rows = []
+    rows << [I18n.t(:'result_output.result_fail').to_s.colorize(:red)]
+    Terminal::Table.new title: I18n.t(:'result_output.result_title').to_s.colorize(:green), rows: rows
+  end
+
   def show_results
     rows = []
-
-    if results.empty?
-      rows << [I18n.t(:'result_output.result_fail').to_s.colorize(:red)]
-    else
-      results.each do |car|
-        car.each { |parameter, value| rows << [I18n.t(:"cars_params.#{parameter}").to_s, value.to_s.colorize(:blue)] }
-        rows << :separator if results.last != car
-      end
+    results.each do |car|
+      car.each { |parameter, value| rows << [I18n.t(:"cars_params.#{parameter}").to_s, value.to_s.colorize(:blue)] }
+      rows << :separator if results.last != car
     end
 
     Terminal::Table.new title: I18n.t(:'result_output.result_title').to_s.colorize(:green), rows: rows
