@@ -17,3 +17,5 @@ gem 'terminal-table', '~> 3.0'
 gem "bundler-audit", "~> 0.9.1"
 
 gem "bundler-leak", "~> 0.3.0"
+
+gem "lefthook", "~> 1.2"
