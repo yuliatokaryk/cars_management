@@ -13,3 +13,7 @@ gem 'rubocop-performance', '~> 1.15'
 gem 'rubocop-rails', '~> 2.17'
 gem 'rubocop-rspec', '~> 2.15'
 gem 'terminal-table', '~> 3.0'
+
+gem "bundler-audit", "~> 0.9.1"
+
+gem "bundler-leak", "~> 0.3.0"
