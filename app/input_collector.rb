@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
+# service to collect user inputs
 class InputCollector
   attr_accessor :rules, :sort_options
 
-  SEARCH_PARAMETERS = %i[make model year_from year_to price_from price_to]
-  SORT_PARAMETERS = %i[option direction]
+  SEARCH_PARAMETERS = %i[make model year_from year_to price_from price_to].freeze
+  SORT_PARAMETERS = %i[option direction].freeze
 
   def initialize
     @rules = {}

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# service to search cars in database
 class CarsSearcher
   attr_reader :total_quantity, :search_rules, :cars_list
 
