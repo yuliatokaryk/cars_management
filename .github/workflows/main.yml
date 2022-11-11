@@ -1,0 +1,25 @@
+name: Ruby
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
+        with:
+          ruby-version: '3.0.2'
+      - name: Install dependencies
+        run: bundle install
+      - name: bundler-leak
+        run: bundle exec bundler-leak
+      - name: backend security
+        run: bundle audit
+      - name: Rubocop
+        run: rubocop
