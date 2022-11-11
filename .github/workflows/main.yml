@@ -17,8 +17,6 @@ jobs:
           ruby-version: '3.0.2'
       - name: Install dependencies
         run: bundle install
-      - name: bundler-leak
-        run: bundle exec bundler-leak
       - name: backend security
         run: bundle audit
       - name: Rubocop
