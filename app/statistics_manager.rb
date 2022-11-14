@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# service to statistic management
 class StatisticsManager
   attr_accessor :db_file, :search_list, :rules, :total_quantity, :search_element
 
