@@ -12,8 +12,8 @@ class CarsSearcher
   def call
     general_choosing('make')
     general_choosing('model')
-    value_checker('year_from', 'year_to')
-    value_checker('price_from', 'price_to')
+    value_checker('year')
+    value_checker('price')
     count_total_quantity
   end
 
@@ -25,32 +25,34 @@ class CarsSearcher
     cars_list.keep_if { |car| car[rule_name].downcase == search_rules[rule_name].downcase }
   end
 
-  def value_checker(rule_from, rule_to)
-    return if str_checker(search_rules[rule_from]) && str_checker(search_rules[rule_to])
+  def value_checker(rule_name)
+    value_from = search_rules["#{rule_name}_from"]
+    value_to = search_rules["#{rule_name}_to"]
+    return if str_checker(value_from) && str_checker(value_to)
 
-    range_determining(rule_from, rule_to)
+    range_determining(rule_name, value_from, value_to)
   end
 
-  def range_determining(start_value, end_value)
-    if !str_checker(search_rules[start_value]) && !str_checker(search_rules[end_value])
-      range_from_to(start_value, end_value)
-    elsif !str_checker(search_rules[start_value])
-      range_from(start_value)
+  def range_determining(rule_name, value_from, value_to)
+    if !str_checker(value_from) && !str_checker(value_to)
+      range_from_to(rule_name, value_from, value_to)
+    elsif !str_checker(value_from)
+      range_from(rule_name, value_from)
     else
-      range_to(end_value)
+      range_to(rule_name, value_to)
     end
   end
 
-  def range_from_to(start_value, end_value)
-    cars_list.keep_if { |car| (search_rules[start_value].to_i..search_rules[end_value].to_i).cover?(car['year']) }
+  def range_from_to(rule, start_value, end_value)
+    cars_list.keep_if { |car| start_value.to_i..end_value.to_i.cover?(car[rule]) }
   end
 
-  def range_from(start_value)
-    @cars_list.keep_if { |car| car['year'] >= search_rules[start_value].to_i }
+  def range_from(rule, start_value)
+    cars_list.keep_if { |car| car[rule] >= start_value.to_i }
   end
 
-  def range_to(end_value)
-    @cars_list.keep_if { |car| car['year'] <= search_rules[end_value].to_i }
+  def range_to(rule, end_value)
+    cars_list.keep_if { |car| car[rule] <= end_value.to_i }
   end
 
   def str_checker(user_input)
