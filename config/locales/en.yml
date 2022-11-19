@@ -1,4 +1,15 @@
 en:
+  menu:
+    welcome_message: Hello! Welcome to Cars Searcher!
+    help: This is a car finder app. You can view the list of all available cars, or set search parameters.
+    end: Goodbye!
+    main_menu: MAIN MENU
+    hint: Click the number of the selected option
+  menu_options:
+    search_car: Search a car
+    show_cars: Show all cars
+    help: Help
+    exit: Exit
   general:
     rules_beginning: Please select search rules.
     choose_request: Pleace choose

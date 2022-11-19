@@ -4,14 +4,14 @@
 class OutputManager
   attr_accessor :results, :statistic
 
-  def initialize(results, statistic)
+  def initialize(results, statistic = nil)
     @results = results
     @statistic = statistic
   end
 
   def call
     console_output(result_finder)
-    console_output(show_statistic)
+    console_output(show_statistic) if statistic
   end
 
   private
