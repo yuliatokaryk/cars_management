@@ -44,7 +44,7 @@ class CarsSearcher
   end
 
   def range_from_to(rule, start_value, end_value)
-    cars_list.keep_if { |car| start_value.to_i..end_value.to_i.cover?(car[rule]) }
+    cars_list.keep_if { |car| (start_value.to_i..end_value.to_i).cover?(car[rule]) }
   end
 
   def range_from(rule, start_value)
