@@ -17,11 +17,12 @@ class UserSearchs < ApplicationRecord
     database.record(@users_searchs)
   end
 
-  # def update(search_rules)
-  #   all
-  #   @users_searchs << search_rules
-  #   database.record(@users_searchs)
-  # end
+  def update(params)
+    all
+    user_r = @users_searchs.find { |user| user['user'] == params ['user'] }
+    user_r['search_rules'] << params['search_rules'][0]
+    database.record(@users_searchs)
+  end
 
   private
 

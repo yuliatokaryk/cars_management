@@ -6,19 +6,22 @@ class UsersSearchersController < ApplicationController
 
   def show
     user_searches = database.find_by(params['user'])
-    user_searches ? show_searchs(user_searches) : show_message
+    user_searches ? show_searchs(user_searches['search_rules']) : show_message
   end
 
   def save
-    database.create(params)
+    user_searches = database.find_by(params['user'])
+    user_searches ? database.update(params) : database.create(params)
   end
 
   private
 
-  def show_searchs(result)
+  def show_searchs(results)
     table = Terminal::Table.new title: 'Your searches'.colorize(:yellow) do |t|
-      result['search_rules'].each do |key, value|
-        t << [key, value]
+      results.each do |result|
+        result.each do |key, value|
+          t << [key, value]
+        end
       end
       t.style = { all_separators: true }
     end
