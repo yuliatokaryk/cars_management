@@ -2,11 +2,16 @@
 
 # App main class
 class App
+  def initialize(user)
+    @user = user
+  end
+
   def call
     input_collector.call
     searcher.call
     sorted_result = sorting_manager.call
     statistics_manager.call
+    users_shearchs_controller if @user
     OutputManager.new(sorted_result, statistics_manager.search_element).call
   end
 
@@ -34,5 +39,9 @@ class App
 
   def statistics_manager
     @statistics_manager ||= StatisticsManager.new(statistics_db, input_collector.rules, searcher.total_quantity)
+  end
+
+  def users_shearchs_controller
+    UsersSearchersController.new({ 'user' => @user, 'search_rules' => input_collector.rules }).save
   end
 end

@@ -3,8 +3,8 @@
 # service of main menu
 class MainMenu
   MENU_OPTIONS = %i[search_car show_cars help exit].freeze
-  NO_USER = %i[log_in sign_up].freeze
-  USER = %i[log_out].freeze
+  NO_USER = %i[sign_up log_in].freeze
+  USER = %i[log_out my_searches].freeze
 
   def initialize
     welcome_message
@@ -26,13 +26,15 @@ class MainMenu
   end
 
   def form_user_menu
+    @user_option = []
     if !@session.current_user
-      @user_option = []
       NO_USER.each_with_index do |option, index|
         @user_option << [I18n.t("session_menu.#{option}"), index.to_s.colorize(:blue)]
       end
     else
-      @user_option = [[I18n.t('session_menu.log_out'), '1'.to_s.colorize(:blue)]]
+      USER.each_with_index do |option, index|
+        @user_option << [I18n.t("session_menu.#{option}"), index.to_s.colorize(:blue)]
+      end
     end
   end
 
@@ -53,12 +55,8 @@ class MainMenu
 
   def menu_response
     case @user_choise
-    when '0', '1'
-      sesion_option
-    when '2', '3'
-      cars_option
-    when '4', '5'
-      menu_option
+    when '0', '1' then sesion_option
+    when '2', '3', '4', '5' then cars_option
     else
       call
     end
@@ -66,31 +64,31 @@ class MainMenu
 end
 
 def sesion_option
+  @session.current_user ? user_menu : no_user_menu
+end
+
+def user_menu
   case @user_choise
-  when '0'
-    @session.log_in
-  when '1'
-    @session.current_user ? @session.log_out : @session.sign_up
+  when '0' then @session.log_out
+  when '1' then UsersSearchersController.new({ 'user' => @session.current_user }).show
+  end
+  call
+end
+
+def no_user_menu
+  case @user_choise
+  when '0' then @session.sign_up
+  when '1' then @session.log_in
   end
   call
 end
 
 def cars_option
   case @user_choise
-  when '2'
-    App.new.call
-  when '3'
-    ShowCars.new.call
+  when '2' then App.new(@session.current_user).call
+  when '3' then ShowCars.new.call
+  when '4' then puts I18n.t('menu.help').colorize(:light_blue)
+  when '5' then return puts I18n.t('menu.end').colorize(:green)
   end
   call
-end
-
-def menu_option
-  case @user_choise
-  when '4'
-    puts I18n.t('menu.help').colorize(:light_blue)
-    call
-  when '5'
-    puts I18n.t('menu.end').colorize(:green)
-  end
 end
