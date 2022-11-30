@@ -10,6 +10,8 @@ class UsersSearchesController < ApplicationController
   end
 
   def save
+    params['search_rules'][0].delete_if { |_k, v| v.empty? }
+
     user_searches = database.find_by(params['user'])
     user_searches ? database.update(params) : database.create(params)
   end
@@ -33,6 +35,6 @@ class UsersSearchesController < ApplicationController
   end
 
   def database
-    UserSearchs.new
+    UserSearches.new
   end
 end
