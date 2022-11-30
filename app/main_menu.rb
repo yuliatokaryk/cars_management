@@ -70,7 +70,7 @@ end
 def user_menu
   case @user_choise
   when '0' then @session.log_out
-  when '1' then UsersSearchersController.new({ 'user' => @session.current_user }).show
+  when '1' then UsersSearchesController.new({ 'user' => @session.current_user }).show
   end
   call
 end

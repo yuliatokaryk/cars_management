@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # User Search Model
-class UserSearchs < ApplicationRecord
+class UserSearches < ApplicationRecord
   def all
     @users_searchs = database.fetch
   end

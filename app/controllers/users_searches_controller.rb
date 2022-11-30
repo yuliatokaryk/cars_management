@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Users controller
-class UsersSearchersController < ApplicationController
+# Users searches controller
+class UsersSearchesController < ApplicationController
   attr_accessor :params
 
   def show

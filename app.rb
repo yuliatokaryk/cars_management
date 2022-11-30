@@ -42,6 +42,6 @@ class App
   end
 
   def users_shearchs_controller
-    UsersSearchersController.new({ 'user' => @user, 'search_rules' => [input_collector.rules] }).save
+    UsersSearchesController.new({ 'user' => @user, 'search_rules' => [input_collector.rules] }).save
   end
 end
