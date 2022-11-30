@@ -10,8 +10,6 @@ class UsersSearchesController < ApplicationController
   end
 
   def save
-    params['search_rules'][0].delete_if { |_k, v| v.empty? }
-
     user_searches = database.find_by(params['user'])
     user_searches ? database.update(params) : database.create(params)
   end
@@ -19,11 +17,18 @@ class UsersSearchesController < ApplicationController
   private
 
   def show_searchs(results)
-    table = Terminal::Table.new title: 'Your searches'.colorize(:yellow) do |t|
-      results.each do |result|
-        result.each do |key, value|
-          t << [key, value]
-        end
+    puts 'Your search history:'
+    results.each do |result|
+      create_search_table(result)
+    end
+  end
+
+  def create_search_table(search_result)
+    table = Terminal::Table.new title: search_result[0]['date'].colorize(:yellow) do |t|
+      search_result[1..].each do |search|
+        row = []
+        search.each { |key, value| row << "#{key} : #{value}" }
+        t << row
       end
       t.style = { all_separators: true }
     end

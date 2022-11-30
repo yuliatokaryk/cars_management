@@ -1,0 +1,29 @@
+---
+- user: julia@gmail.com
+  search_rules:
+  - - date: 30/11/2022
+    - make: bmw
+      model: ''
+      year_from: ''
+      year_to: ''
+      price_from: ''
+      price_to: ''
+    - make: audi
+      model: ''
+      year_from: ''
+      year_to: ''
+      price_from: ''
+      price_to: ''
+    - make: audi
+      model: ''
+      year_from: '2000'
+      year_to: '2020'
+      price_from: '10000'
+      price_to: '400000'
+  - - date: 01/01/2021
+    - make: bmw
+      model: x5
+      year_from: '2002'
+      year_to: '2020'
+      price_from: ''
+      price_to: ''
