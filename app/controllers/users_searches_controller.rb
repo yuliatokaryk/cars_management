@@ -17,7 +17,7 @@ class UsersSearchesController < ApplicationController
   private
 
   def show_searchs(results)
-    puts 'Your search history:'
+    puts I18n.t('user_searches.searches_title').colorize(:green)
     results.each do |result|
       create_search_table(result)
     end
