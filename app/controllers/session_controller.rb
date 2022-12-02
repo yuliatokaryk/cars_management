@@ -77,12 +77,12 @@ class SessionController < ApplicationController
   end
 
   def greeting
-    rows = [["#{I18n.t('user.greeting')}, #{@current_user}!".colorize(:green)]]
+    rows = [["#{I18n.t('user.greeting')}, #{@current_user['email']}!".colorize(:green)]]
     puts Terminal::Table.new rows: rows
   end
 
   def farewell
-    rows = [["#{I18n.t('user.farewell')}, #{@current_user}!".colorize(:green)]]
+    rows = [["#{I18n.t('user.farewell')}, #{@current_user['email']}!".colorize(:green)]]
     puts Terminal::Table.new rows: rows
   end
 
