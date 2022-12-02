@@ -19,7 +19,6 @@ class SessionController < ApplicationController
     return error_message('invalid_password') unless password_validator(@password)
 
     save_new_user
-    @current_user = @email
     greeting
   end
 
@@ -31,7 +30,7 @@ class SessionController < ApplicationController
     ask_password
     return error_message('invalid_password') unless UsersController.new.check_password(user, @password)
 
-    @current_user = @email
+    @current_user = user
     greeting
   end
 
@@ -71,8 +70,10 @@ class SessionController < ApplicationController
   end
 
   def save_new_user
-    user = UsersController.new({ 'email' => @email, 'password' => BCrypt::Password.create(@password) })
+    password = BCrypt::Password.create(@password)
+    user = UsersController.new({ 'email' => @email, 'password' => password, 'admin' => false })
     user.create
+    @current_user = user.params
   end
 
   def greeting
