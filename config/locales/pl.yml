@@ -1,4 +1,30 @@
 pl:
+  user:
+    enter_email: Wpisz adres e-mail
+    enter_password: Wpisz hasło
+    greeting: Witam
+    farewell: Do zobaczenia później
+  errors:
+    invalid_email: Adres email jest błędny
+    exist_email: Adres e-mail jest już zarejestrowany 
+    invalid_password: Hasło jest błędne
+    no_exist_email: Adres e-mail jest nie zarejestrowany  
+  password_rules:
+    password_hint: Hasło musi składać się z
+    rule1: 1. co najmniej 1 wielkiej litery
+    rule2: 2. co najmniej 2 specjalny charakterów
+    rule3: 3. co najmniej 8 znaków
+    rule4: 4. nie więcej niż 20 znaków
+  email_rules:
+    email_hint: Email musi
+    rule1: 1. mieć format emailu
+    rule2: 2. mieć co najmniej 5 charakterów przed @
+    rule3: 3. być unikalny
+  session_menu:
+    sign_up: Zarejestrować się
+    log_in: Zalogować się
+    log_out: Wylogować się
+    my_searches: Moje wyszukanie
   menu:
     welcome_message: Witamy w wyszukiwarce samochodów!
     help: To jest aplikacja do wyszukiwania samochodów. Możesz wyświetlić listę wszystkich dostępnych samochodów lub ustawić parametry wyszukiwania.
@@ -36,3 +62,6 @@ pl:
     total_quantity: Liczba wyników wyszukiwania
     requests_quantity: Liczba wyszukiwań według określonych parametrów
     result_fail: Przepraszamy, brak wyników z podanymi parametrami
+  user_searches:
+    error_message: Nie przeprowadziłeś jeszcze żadnych wyszukiwań.
+    searches_title: Twoje Wyszukiwania

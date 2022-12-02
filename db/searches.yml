@@ -6,7 +6,7 @@
     year_to: ''
     price_from: ''
     price_to: ''
-  requests_quantity: 13
+  requests_quantity: 14
   total_quantity: 14
 - params:
     make: bmw
@@ -15,5 +15,113 @@
     year_to: ''
     price_from: ''
     price_to: ''
-  requests_quantity: 5
+  requests_quantity: 24
+  total_quantity: 2
+- params:
+    make: bmw
+    model: x5
+    year_from: '2010'
+    year_to: ''
+    price_from: ''
+    price_to: ''
+  requests_quantity: 1
+  total_quantity: 1
+- params:
+    make: bmw'
+    model: ''
+    year_from: ''
+    year_to: ''
+    price_from: ''
+    price_to: ''
+  requests_quantity: 1
+  total_quantity: 0
+- params:
+    make: renault
+    model: ''
+    year_from: ''
+    year_to: ''
+    price_from: ''
+    price_to: ''
+  requests_quantity: 4
+  total_quantity: 1
+- params:
+    make: renault
+    model: ''
+    year_from: ''
+    year_to: ''
+    price_from: '1000'
+    price_to: ''
+  requests_quantity: 1
+  total_quantity: 1
+- params:
+    make: bmw
+    model: x5
+    year_from: ''
+    year_to: '2020'
+    price_from: ''
+    price_to: ''
+  requests_quantity: 1
+  total_quantity: 2
+- params:
+    make: audi
+    model: ''
+    year_from: ''
+    year_to: '2022'
+    price_from: ''
+    price_to: ''
+  requests_quantity: 1
+  total_quantity: 2
+- params:
+    make: audi
+    model: ''
+    year_from: ''
+    year_to: ''
+    price_from: ''
+    price_to: ''
+  requests_quantity: 18
+  total_quantity: 2
+- params:
+    make: reno
+    model: ''
+    year_from: ''
+    year_to: ''
+    price_from: ''
+    price_to: ''
+  requests_quantity: 2
+  total_quantity: 0
+- params:
+    make: renault
+    model: ''
+    year_from: ''
+    year_to: '2020'
+    price_from: ''
+    price_to: '200000'
+  requests_quantity: 1
+  total_quantity: 1
+- params:
+    make: hahaha
+    model: ''
+    year_from: ''
+    year_to: ''
+    price_from: ''
+    price_to: ''
+  requests_quantity: 1
+  total_quantity: 0
+- params:
+    make: audi
+    model: ''
+    year_from: '2000'
+    year_to: '2020'
+    price_from: '10000'
+    price_to: '400000'
+  requests_quantity: 1
+  total_quantity: 2
+- params:
+    make: bmw
+    model: x5
+    year_from: '2002'
+    year_to: '2020'
+    price_from: ''
+    price_to: ''
+  requests_quantity: 1
   total_quantity: 2
