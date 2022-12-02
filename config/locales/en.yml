@@ -24,6 +24,7 @@ en:
     sign_up: Sign up
     log_in: Log in
     log_out: Log out
+    my_searches: My searches
   menu:
     welcome_message: Hello! Welcome to Cars Searcher!
     help: This is a car finder app. You can view the list of all available cars, or set search parameters.
@@ -61,3 +62,6 @@ en:
     total_quantity: Total Quantity
     requests_quantity: Requests Quantity
     result_fail: Sorry, there no results
+  user_searches:
+    error_message: You haven't made any searches yet.
+    searches_title: Your Searches

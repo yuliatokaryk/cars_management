@@ -24,6 +24,7 @@ pl:
     sign_up: Zarejestrować się
     log_in: Zalogować się
     log_out: Wylogować się
+    my_searches: Moje wyszukanie
   menu:
     welcome_message: Witamy w wyszukiwarce samochodów!
     help: To jest aplikacja do wyszukiwania samochodów. Możesz wyświetlić listę wszystkich dostępnych samochodów lub ustawić parametry wyszukiwania.
@@ -61,3 +62,6 @@ pl:
     total_quantity: Liczba wyników wyszukiwania
     requests_quantity: Liczba wyszukiwań według określonych parametrów
     result_fail: Przepraszamy, brak wyników z podanymi parametrami
+  user_searches:
+    error_message: Nie przeprowadziłeś jeszcze żadnych wyszukiwań.
+    searches_title: Twoje Wyszukiwania
