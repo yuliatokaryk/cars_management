@@ -11,7 +11,7 @@ class App
     searcher.call
     sorted_result = sorting_manager.call
     statistics_manager.call
-    users_shearchs_controller if @user
+    users_searches_controller if @user
     OutputManager.new(sorted_result, statistics_manager.search_element).call
   end
 
@@ -41,7 +41,7 @@ class App
     @statistics_manager ||= StatisticsManager.new(statistics_db, input_collector.rules, searcher.total_quantity)
   end
 
-  def users_shearchs_controller
+  def users_searches_controller
     d = Time.now.strftime('%d/%m/%Y')
     UsersSearchesController.new({ 'user' => @user, 'search_rules' => [[{ 'date' => d }, input_collector.rules]] }).save
   end
