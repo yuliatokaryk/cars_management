@@ -65,3 +65,8 @@ uk:
   user_searches:
     error_message: Ви ще не здійснили жодного пошуку.
     searches_title: Ваші пошуки
+  adnin_menu_options: 
+    create_ad: Створити оголошення
+    update_ad: Оновити оголошення
+    delete_ad: Видалити оголошення
+    log_out: Вийти

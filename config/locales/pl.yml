@@ -65,3 +65,8 @@ pl:
   user_searches:
     error_message: Nie przeprowadziłeś jeszcze żadnych wyszukiwań.
     searches_title: Twoje Wyszukiwania
+  adnin_menu_options: 
+    create_ad: Utwórz ogłoszenie
+    update_ad: Zaktualizuj ogłoszenie
+    delete_ad: Usuń ogłoszenie
+    log_out: Wyloguj

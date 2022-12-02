@@ -5,6 +5,7 @@ class MainMenu
   MENU_OPTIONS = %i[search_car show_cars help exit].freeze
   NO_USER = %i[sign_up log_in].freeze
   USER = %i[log_out my_searches].freeze
+  ADMIN_MENU = %i[create_ad update_ad delete_ad log_out].freeze
 
   def initialize
     welcome_message
@@ -12,10 +13,16 @@ class MainMenu
   end
 
   def call
-    form_user_menu
-    show_menu_option
-    menu_request
-    menu_response
+    if @session.current_user && @session.current_user['admin'] == true
+      show_admin_menu
+      menu_request
+      admin_menu_response
+    else
+      form_user_menu
+      show_menu_option
+      menu_request
+      menu_response
+    end
   end
 
   private
@@ -38,6 +45,16 @@ class MainMenu
     end
   end
 
+  def show_admin_menu
+    table = Terminal::Table.new title: I18n.t('menu.hint').to_s.colorize(:yellow) do |t|
+      ADMIN_MENU.each_with_index do |option, index|
+        t << [I18n.t("adnin_menu_options.#{option}"), index.to_s.colorize(:blue)]
+      end
+      t.style = { all_separators: true }
+    end
+    puts table
+  end
+
   def show_menu_option
     table = Terminal::Table.new title: I18n.t('menu.hint').to_s.colorize(:yellow) do |t|
       @user_option.each { |option| t << option }
@@ -51,6 +68,16 @@ class MainMenu
 
   def menu_request
     @user_choise = gets.chomp
+  end
+
+  def admin_menu_response
+    case @user_choise
+    when '0' then CarsController.new.create
+    when '1' then CarsController.new.update
+    when '2' then CarsController.new.delete
+    when '3' then @session.log_out
+    end
+    call
   end
 
   def menu_response
