@@ -70,3 +70,31 @@ pl:
     update_ad: Zaktualizuj ogłoszenie
     delete_ad: Usuń ogłoszenie
     log_out: Wyloguj
+  add_rules:
+    make: 
+      required: Wymagany
+      min_sym: Musi zawierać co najmniej 3 symbole
+      max_sym: Musi zawierać maksymalnie 50 symboli
+      content: Musi składać się wyłącznie z angielskich liter
+    model:
+      required: Wymagany
+      min_sym: Musi zawierać co najmniej 3 symbole
+      max_sym: Musi zawierać maksymalnie 50 symboli
+      content: Musi składać się wyłącznie z angielskich liter
+    year:
+      required: Wymagany
+      type: Musi być liczbą całkowitą
+      max_value: Musi nie być większy niż w bieżącym roku
+      min_value: Musi być większy niż 1900 rok
+    odometer:
+      required: Wymagany
+      type: Musi być liczbą całkowitą
+      min_value: Musi być >= 0
+    price:
+      required: Wymagany
+      type: Musi być liczbą całkowitą
+      min_value: Musi być >= 0
+    description:
+      required: Opcjonalny
+      type: Musi być tekstem
+      max_value: Musi nie mieć więcej niż 5000 symboli

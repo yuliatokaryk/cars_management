@@ -70,3 +70,31 @@ uk:
     update_ad: Оновити оголошення
     delete_ad: Видалити оголошення
     log_out: Вийти
+  add_rules:
+    make: 
+      required: Обов'язково до заповнення
+      min_sym: Щонайменше 3 символи
+      max_sym: Щонайбільше 50 символів
+      content: Складається з латинських літер
+    model:
+      required: Обов'язково до заповнення
+      min_sym: Щонайменше 3 символи
+      max_sym: Щонайбільше 50 символів
+      content: Складається з латинських літер
+    year:
+      required: Обов'язково до заповнення
+      type: Число
+      max_value: Максимум поточний рік
+      min_value: Мінімум 1900 рік
+    odometer:
+      required: Обов'язково до заповнення
+      type: Число
+      min_value: Мусить бути >= 0
+    price:
+      required: Обов'язково до заповнення
+      type: Число
+      min_value: Мусить бути >= 0
+    description:
+      required: Опціонально
+      type: Текст
+      max_value: Щонайбільше 5000 символів
