@@ -17,7 +17,7 @@ class CarsController < ApplicationController
     params['id'] = Time.now.to_i.to_s
     rules_collector
     params['date_added'] = Time.now.strftime('%d/%m/%Y')
-    database.create(params)
+    database.create(params) if params.length == 8
   end
 
   def update
@@ -49,9 +49,13 @@ class CarsController < ApplicationController
   def rules_collector
     CAR_RULES.each do |rule|
       rule_message(rule)
-      puts "please select #{rule}"
+      puts "#{I18n.t("cars_params.#{rule}")}:".capitalize.colorize(:blue)
       value = gets.chomp
-      validator(rule, value) ? params[rule] = value : break
+      unless validator(rule, value)
+        puts I18n.t('errors.invalid_car_rule').colorize(:red)
+        break
+      end
+      params[rule] = value
     end
   end
 
@@ -60,7 +64,7 @@ class CarsController < ApplicationController
   end
 
   def rule_message(rule)
-    table = Terminal::Table.new title: rule.to_s.colorize(:yellow) do |t|
+    table = Terminal::Table.new title: I18n.t("cars_params.#{rule}").to_s.capitalize.colorize(:yellow) do |t|
       INPUT_RULES[rule].each do |el|
         t << [I18n.t("add_rules.#{rule}.#{el}").colorize(:light_blue)]
       end

@@ -9,6 +9,7 @@ uk:
     exist_email: Електронна адреса вже зареєстрована
     invalid_password: Пароль невірний
     no_exist_email: Електронну адресу не зареєстровано
+    invalid_car_rule: Введено невалідні дані
   password_rules:
     password_hint: Пароль повинен містити
     rule1: 1. щонайменше 1 велику літеру
@@ -71,6 +72,7 @@ uk:
     delete_ad: Видалити оголошення
     log_out: Вийти
   add_rules:
+    add_rule_enter_message: Будь ласка, введіть 
     make: 
       required: Обов'язково до заповнення
       min_sym: Щонайменше 3 символи

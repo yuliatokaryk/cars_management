@@ -8,7 +8,8 @@ pl:
     invalid_email: Adres email jest błędny
     exist_email: Adres e-mail jest już zarejestrowany 
     invalid_password: Hasło jest błędne
-    no_exist_email: Adres e-mail jest nie zarejestrowany  
+    no_exist_email: Adres e-mail jest nie zarejestrowany
+    invalid_car_rule: Dane są błędne
   password_rules:
     password_hint: Hasło musi składać się z
     rule1: 1. co najmniej 1 wielkiej litery
@@ -71,6 +72,7 @@ pl:
     delete_ad: Usuń ogłoszenie
     log_out: Wyloguj
   add_rules:
+    add_rule_enter_message: Proszę wpisać
     make: 
       required: Wymagany
       min_sym: Musi zawierać co najmniej 3 symbole

@@ -8,7 +8,8 @@ en:
     invalid_email: The email address is not valid
     exist_email: The email address is already registered 
     invalid_password: The password is not valid
-    no_exist_email: The email address not registered 
+    no_exist_email: The email address not registered
+    invalid_car_rule: Input is not valid
   password_rules:
     password_hint: Password must consist of
     rule1: 1. at least 1 capital letter
@@ -71,6 +72,7 @@ en:
     delete_ad: Delete an Advertisement
     log_out: Log out
   add_rules:
+    add_rule_enter_message: Please enter
     make: 
       required: Required
       min_sym: Should have at least 3 symbols
