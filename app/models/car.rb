@@ -21,17 +21,17 @@ class Car < ApplicationRecord
     all
     car = @cars.find { |item| item['id'] == params['id'] }
     params.each do |k, v|
-      car[k] = v unless v.empty?
+      car[k] = v unless v.empty? || k == 'date_added'
     end
     database.record(@cars)
   end
 
-  # def delete(id)
-  #   all
-  #   car = @cars.find { |item| item['id'] == id }
-  #   @cars.delete(car)
-  #   database.record(@cars)
-  # end
+  def delete(id)
+    all
+    car = @cars.find { |item| item['id'] == id }
+    @cars.delete(car)
+    database.remove(@cars)
+  end
 
   private
 
