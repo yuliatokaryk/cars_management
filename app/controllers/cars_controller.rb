@@ -96,26 +96,18 @@ class CarsController < ApplicationController
   def year_validator(year)
     current_year = Time.new.year
     min_year = 1900
-    return true if year.to_i >= min_year && year.to_i <= current_year
-
-    false
+    year.to_i >= min_year && year.to_i <= current_year
   end
 
   def odometer_validator(odometer)
-    return true if odometer.to_i >= 0
-
-    false
+    odometer.to_i >= 0
   end
 
   def price_validator(price)
-    return true if price.to_i >= 0
-
-    false
+    price.to_i >= 0
   end
 
   def description_validator(desc)
-    return true if desc.is_a?(String) && desc.length <= 5000 || desc == ''
-
-    false
+    desc.is_a?(String) && desc.length <= 5000 || desc == ''
   end
 end
