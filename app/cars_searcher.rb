@@ -22,7 +22,7 @@ class CarsSearcher
   def general_choosing(rule_name)
     return if str_checker(search_rules[rule_name])
 
-    cars_list.keep_if { |car| car[rule_name].downcase == search_rules[rule_name].downcase }
+    cars_list.keep_if { |car| car[rule_name].casecmp(search_rules[rule_name]).zero? }
   end
 
   def value_checker(rule_name)
