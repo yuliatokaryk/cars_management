@@ -3,39 +3,41 @@
 # Car Model
 class Car < ApplicationRecord
   def all
-    @cars = database.fetch
+    cars_list
   end
 
   def find_by(param, value)
-    all
-    @cars.find { |car| car[param] == value }
+    @cars = cars_list
+    @car = @cars.find { |car| car[param] == value }
   end
 
   def create(car)
-    all
-    @cars << car
-    database.record(@cars)
+    cars = cars_list
+    cars << car
+    database.update(cars)
   end
 
   def update(params)
-    all
-    car = @cars.find { |item| item['id'] == params['id'] }
+    find_by('id', params['id'])
     params.each do |k, v|
-      car[k] = v unless v.empty? || k == 'date_added'
+      @car[k] = v unless v.empty? || k == 'date_added'
     end
-    database.record(@cars)
+    database.update(@cars)
   end
 
   def delete(id)
-    all
-    car = @cars.find { |item| item['id'] == id }
-    @cars.delete(car)
-    database.remove(@cars)
+    find_by('id', id)
+    @cars.delete(@car)
+    database.update(@cars)
   end
 
   private
 
   def database
     Database.new('cars')
+  end
+
+  def cars_list
+    database.fetch
   end
 end

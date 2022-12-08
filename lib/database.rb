@@ -21,7 +21,7 @@ class Database
     YAML.load_file(database_file) || []
   end
 
-  def remove(hash)
+  def update(hash)
     File.open(database_file, 'w') { |file| YAML.dump(hash, file) }
   end
 
