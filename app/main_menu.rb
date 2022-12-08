@@ -97,7 +97,7 @@ end
 def user_menu
   case @user_choise
   when '0' then @session.log_out
-  when '1' then UsersSearchesController.new({ 'user' => @session.current_user }).show
+  when '1' then UsersSearchesController.new({ 'user' => @session.current_user['email'] }).show
   end
   call
 end
@@ -112,7 +112,7 @@ end
 
 def cars_option
   case @user_choise
-  when '2' then App.new(@session.current_user).call
+  when '2' then App.new(@session.current_user['email']).call
   when '3' then ShowCars.new.call
   when '4' then puts I18n.t('menu.help').colorize(:light_blue)
   when '5' then return puts I18n.t('menu.end').colorize(:green)
