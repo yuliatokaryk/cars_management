@@ -14,7 +14,7 @@ class Car < ApplicationRecord
   def create(car)
     cars = cars_list
     cars << car
-    database.update(cars)
+    update_db(cars)
   end
 
   def update(params)
@@ -22,13 +22,13 @@ class Car < ApplicationRecord
     params.each do |k, v|
       @car[k] = v unless v.empty? || k == 'date_added'
     end
-    database.update(@cars)
+    update_db(@cars)
   end
 
   def delete(id)
     find_by('id', id)
     @cars.delete(@car)
-    database.update(@cars)
+    update_db(@cars)
   end
 
   private
@@ -39,5 +39,9 @@ class Car < ApplicationRecord
 
   def cars_list
     database.fetch
+  end
+
+  def update_db(updated_data)
+    database.update(updated_data)
   end
 end
