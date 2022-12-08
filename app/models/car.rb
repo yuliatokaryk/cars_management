@@ -20,7 +20,7 @@ class Car < ApplicationRecord
   def update(params)
     find_by('id', params['id'])
     params.each do |k, v|
-      @car[k] = v unless v.empty? || k == 'date_added'
+      @car[k] = v unless v.to_s.empty? || k == 'date_added'
     end
     update_db(@cars)
   end
