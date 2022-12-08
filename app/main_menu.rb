@@ -72,9 +72,9 @@ class MainMenu
 
   def admin_menu_response
     case @user_choise
-    when '0' then CarsController.new.create
-    when '1' then CarsController.new.update
-    when '2' then CarsController.new.delete
+    when '0' then CarsController.new.new
+    when '1' then CarsController.new.edit
+    when '2' then CarsController.new.destroy
     when '3' then @session.log_out
     end
     call
