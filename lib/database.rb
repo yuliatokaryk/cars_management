@@ -13,8 +13,8 @@ class Database
     database_setup
   end
 
-  def record(modifyded_data)
-    File.open(database_file, READ_PLUS) { |file| file.write(modifyded_data.to_yaml) }
+  def record(modified_data)
+    File.open(database_file, READ_PLUS) { |file| file.write(modified_data.to_yaml) }
   end
 
   def fetch
