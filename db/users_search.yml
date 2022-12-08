@@ -1,0 +1,10 @@
+---
+- user: julia@gmail.com
+  search_rules:
+  - - date: '08/12/2022'
+    - make: bmw
+      model: x5
+      year_from: '2000'
+      year_to: ''
+      price_from: ''
+      price_to: ''

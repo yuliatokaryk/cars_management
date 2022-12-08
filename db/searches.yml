@@ -125,3 +125,21 @@
     price_to: ''
   requests_quantity: 1
   total_quantity: 2
+- params:
+    make: BMW
+    model: X5
+    year_from: '2004'
+    year_to: ''
+    price_from: ''
+    price_to: ''
+  requests_quantity: 1
+  total_quantity: 1
+- params:
+    make: bmw
+    model: x5
+    year_from: '2000'
+    year_to: ''
+    price_from: ''
+    price_to: ''
+  requests_quantity: 1
+  total_quantity: 2
