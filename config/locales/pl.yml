@@ -10,6 +10,7 @@ pl:
     invalid_password: Hasło jest błędne
     no_exist_email: Adres e-mail jest nie zarejestrowany
     invalid_car_rule: Dane są błędne
+    car_not_found: Nie znaleziono samochodu
   password_rules:
     password_hint: Hasło musi składać się z
     rule1: 1. co najmniej 1 wielkiej litery
@@ -100,3 +101,9 @@ pl:
       required: Opcjonalny
       type: Musi być tekstem
       max_value: Musi nie mieć więcej niż 5000 symboli
+  admin_actions:
+    ask_id: Proszę wpisać id auta
+  ad_action:
+    ad_create: Reklama została pomyślnie utworzona
+    ad_update: Reklama została pomyślnie zaktualizowana
+    ad_delete: Reklama została pomyślnie usunięta

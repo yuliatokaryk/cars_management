@@ -10,6 +10,7 @@ en:
     invalid_password: The password is not valid
     no_exist_email: The email address not registered
     invalid_car_rule: Input is not valid
+    car_not_found: Car not found
   password_rules:
     password_hint: Password must consist of
     rule1: 1. at least 1 capital letter
@@ -100,3 +101,9 @@ en:
       required: optional
       type: Should be a String
       max_value: Should have no more than 5000 symbols
+  admin_actions:
+    ask_id: Please, write cars id
+  ad_action:
+    ad_create: The ad was successfully created
+    ad_update: The ad was successfully updated
+    ad_delete: The ad was successfully removed

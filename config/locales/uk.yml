@@ -10,6 +10,7 @@ uk:
     invalid_password: Пароль невірний
     no_exist_email: Електронну адресу не зареєстровано
     invalid_car_rule: Введено невалідні дані
+    car_not_found: Авто не знайдено
   password_rules:
     password_hint: Пароль повинен містити
     rule1: 1. щонайменше 1 велику літеру
@@ -100,3 +101,9 @@ uk:
       required: Опціонально
       type: Текст
       max_value: Щонайбільше 5000 символів
+  admin_actions:
+    ask_id: Будь ласка, напишіть ID автомобіля
+  ad_action:
+    ad_create: Оголошення було успішно створене
+    ad_update: Оголошення було успішно оновлене
+    ad_delete: Оголошення було успішно видалене
