@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# service to search cars in database
+# service to validate cars rules
 class CarsValidator
   def call(rule, value)
     case rule
