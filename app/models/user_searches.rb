@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # User Search Model
-class UserSearches < ApplicationRecord
+class UserSearches
   def initialize
     super
     all

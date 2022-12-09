@@ -103,6 +103,8 @@ pl:
       max_value: Musi nie mieć więcej niż 5000 symboli
   admin_actions:
     ask_id: Proszę wpisać id auta
+    edit_rule: Proszę wpisać nową wartość
+    edit_title_hint: Proszę wybrać regułę do edycji. Kiedy skończysz, wpisz „save”
   ad_action:
     ad_create: Reklama została pomyślnie utworzona
     ad_update: Reklama została pomyślnie zaktualizowana

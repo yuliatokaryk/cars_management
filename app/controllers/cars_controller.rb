@@ -58,11 +58,11 @@ class CarsController < ApplicationController
   private
 
   def database
-    Car.new
+    Car.new('cars')
   end
 
   def target_id
-    puts I18n.t('admin_actions.ask_id')
+    puts "#{I18n.t('admin_actions.ask_id')}:".colorize(:blue)
     gets.chomp
   end
 
@@ -103,7 +103,7 @@ class CarsController < ApplicationController
   end
 
   def edit_manager
-    table = Terminal::Table.new title: 'please, select rule to edit. When you done type "save"' do |t|
+    table = Terminal::Table.new title: I18n.t('admin_actions.edit_title_hint').to_s.colorize(:yellow) do |t|
       t << CAR_RULES
       t << [*0..CAR_RULES.length - 1]
     end
@@ -120,9 +120,9 @@ class CarsController < ApplicationController
 
   def edit_rule(index)
     rule = CAR_RULES[index.to_i]
-    puts "Please, enter new value. #{CAR_RULES[index.to_i]}:"
+    puts "#{I18n.t('admin_actions.edit_rule')}. #{I18n.t("cars_params.#{rule}")}:".colorize(:blue)
     value = gets.chomp
-    params[rule] = value if @validator.call(rule, value)
+    save_value(rule, value) if @validator.call(rule, value)
     edit_manager
   end
 end

@@ -103,6 +103,8 @@ en:
       max_value: Should have no more than 5000 symbols
   admin_actions:
     ask_id: Please, write cars id
+    edit_rule: Please, write new value
+    edit_title_hint: Please, select rule to edit. When you done type 'save'
   ad_action:
     ad_create: The ad was successfully created
     ad_update: The ad was successfully updated
