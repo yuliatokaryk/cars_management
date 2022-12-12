@@ -8,7 +8,9 @@ en:
     invalid_email: The email address is not valid
     exist_email: The email address is already registered 
     invalid_password: The password is not valid
-    no_exist_email: The email address not registered 
+    no_exist_email: The email address not registered
+    invalid_car_rule: Input is not valid
+    car_not_found: Car not found
   password_rules:
     password_hint: Password must consist of
     rule1: 1. at least 1 capital letter
@@ -65,3 +67,45 @@ en:
   user_searches:
     error_message: You haven't made any searches yet.
     searches_title: Your Searches
+  adnin_menu_options: 
+    create_ad: Create an Advertisement
+    update_ad: Update an Advertisement
+    delete_ad: Delete an Advertisement
+    log_out: Log out
+  add_rules:
+    add_rule_enter_message: Please enter
+    make: 
+      required: Required
+      min_sym: Should have at least 3 symbols
+      max_sym: Should have at most 50 symbols
+      content: Should consists only of English letters
+    model:
+      required: Required
+      min_sym: Should have at least 3 symbols
+      max_sym: Should have at most 50 symbols
+      content: Should consists only of English letters
+    year:
+      required: Required
+      type: Should be an integer
+      max_value: Should be not greater than current year
+      min_value: Should be greater than 1900 year
+    odometer:
+      required: Required
+      type: Should be an integer
+      min_value: Should be >= 0
+    price:
+      required: Required
+      type: Should be an integer
+      min_value: Should be >= 0
+    description:
+      required: optional
+      type: Should be a String
+      max_value: Should have no more than 5000 symbols
+  admin_actions:
+    ask_id: Please, write cars id
+    edit_rule: Please, write new value
+    edit_title_hint: Please, select rule to edit. When you done type 'save'
+  ad_action:
+    ad_create: The ad was successfully created
+    ad_update: The ad was successfully updated
+    ad_delete: The ad was successfully removed

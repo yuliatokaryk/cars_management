@@ -8,7 +8,9 @@ pl:
     invalid_email: Adres email jest błędny
     exist_email: Adres e-mail jest już zarejestrowany 
     invalid_password: Hasło jest błędne
-    no_exist_email: Adres e-mail jest nie zarejestrowany  
+    no_exist_email: Adres e-mail jest nie zarejestrowany
+    invalid_car_rule: Dane są błędne
+    car_not_found: Nie znaleziono samochodu
   password_rules:
     password_hint: Hasło musi składać się z
     rule1: 1. co najmniej 1 wielkiej litery
@@ -65,3 +67,45 @@ pl:
   user_searches:
     error_message: Nie przeprowadziłeś jeszcze żadnych wyszukiwań.
     searches_title: Twoje Wyszukiwania
+  adnin_menu_options: 
+    create_ad: Utwórz ogłoszenie
+    update_ad: Zaktualizuj ogłoszenie
+    delete_ad: Usuń ogłoszenie
+    log_out: Wyloguj
+  add_rules:
+    add_rule_enter_message: Proszę wpisać
+    make: 
+      required: Wymagany
+      min_sym: Musi zawierać co najmniej 3 symbole
+      max_sym: Musi zawierać maksymalnie 50 symboli
+      content: Musi składać się wyłącznie z angielskich liter
+    model:
+      required: Wymagany
+      min_sym: Musi zawierać co najmniej 3 symbole
+      max_sym: Musi zawierać maksymalnie 50 symboli
+      content: Musi składać się wyłącznie z angielskich liter
+    year:
+      required: Wymagany
+      type: Musi być liczbą całkowitą
+      max_value: Musi nie być większy niż w bieżącym roku
+      min_value: Musi być większy niż 1900 rok
+    odometer:
+      required: Wymagany
+      type: Musi być liczbą całkowitą
+      min_value: Musi być >= 0
+    price:
+      required: Wymagany
+      type: Musi być liczbą całkowitą
+      min_value: Musi być >= 0
+    description:
+      required: Opcjonalny
+      type: Musi być tekstem
+      max_value: Musi nie mieć więcej niż 5000 symboli
+  admin_actions:
+    ask_id: Proszę wpisać id auta
+    edit_rule: Proszę wpisać nową wartość
+    edit_title_hint: Proszę wybrać regułę do edycji. Kiedy skończysz, wpisz „save”
+  ad_action:
+    ad_create: Reklama została pomyślnie utworzona
+    ad_update: Reklama została pomyślnie zaktualizowana
+    ad_delete: Reklama została pomyślnie usunięta

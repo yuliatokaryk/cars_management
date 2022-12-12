@@ -9,6 +9,8 @@ uk:
     exist_email: Електронна адреса вже зареєстрована
     invalid_password: Пароль невірний
     no_exist_email: Електронну адресу не зареєстровано
+    invalid_car_rule: Введено невалідні дані
+    car_not_found: Авто не знайдено
   password_rules:
     password_hint: Пароль повинен містити
     rule1: 1. щонайменше 1 велику літеру
@@ -65,3 +67,45 @@ uk:
   user_searches:
     error_message: Ви ще не здійснили жодного пошуку.
     searches_title: Ваші пошуки
+  adnin_menu_options: 
+    create_ad: Створити оголошення
+    update_ad: Оновити оголошення
+    delete_ad: Видалити оголошення
+    log_out: Вийти
+  add_rules:
+    add_rule_enter_message: Будь ласка, введіть 
+    make: 
+      required: Обов'язково до заповнення
+      min_sym: Щонайменше 3 символи
+      max_sym: Щонайбільше 50 символів
+      content: Складається з латинських літер
+    model:
+      required: Обов'язково до заповнення
+      min_sym: Щонайменше 3 символи
+      max_sym: Щонайбільше 50 символів
+      content: Складається з латинських літер
+    year:
+      required: Обов'язково до заповнення
+      type: Число
+      max_value: Максимум поточний рік
+      min_value: Мінімум 1900 рік
+    odometer:
+      required: Обов'язково до заповнення
+      type: Число
+      min_value: Мусить бути >= 0
+    price:
+      required: Обов'язково до заповнення
+      type: Число
+      min_value: Мусить бути >= 0
+    description:
+      required: Опціонально
+      type: Текст
+      max_value: Щонайбільше 5000 символів
+  admin_actions:
+    ask_id: Будь ласка, напишіть ID автомобіля
+    edit_rule: Будь ласка, напишіть нове значення
+    edit_title_hint: Будь ласка, оберіть значення для редагування. Коли редагування закінчене, введіть „save”
+  ad_action:
+    ad_create: Оголошення було успішно створене
+    ad_update: Оголошення було успішно оновлене
+    ad_delete: Оголошення було успішно видалене

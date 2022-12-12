@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # User Model
-class User < ApplicationRecord
+class User
   def all
     @users = database.fetch
   end
