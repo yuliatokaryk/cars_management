@@ -1,5 +1,4 @@
 require:
-  - rubocop-md
   - rubocop-rake
   - rubocop-performance
   - rubocop-rspec
