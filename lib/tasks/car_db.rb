@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'faker'
-require_relative '../database'
-
 namespace :db do
   namespace :cars do
     desc 'Recreate cars database'
@@ -26,12 +23,12 @@ namespace :db do
 end
 
 def make_car
-  { 'id' => Faker::Base.numerify('#####-#####-######-#####'),
-    'make' => Faker::Vehicle.make,
-    'model' => Faker::Vehicle.model,
-    'year' => Faker::Vehicle.year,
-    'odometer' => Faker::Vehicle.kilometrage,
-    'price' => Faker::Commerce.price(range: 1000..500_00),
-    'description' => Faker::Vehicle.car_options.join(', '),
-    'date_added' => Faker::Date.between(from: '2020/01/01', to: '2022/12/6') }
+  { 'id' => FFaker::Vehicle.vin,
+    'make' => FFaker::Vehicle.make,
+    'model' => FFaker::Vehicle.model,
+    'year' => FFaker::Vehicle.year,
+    'odometer' => FFaker::Random.rand(1..300_000),
+    'price' => FFaker::Random.rand(1000..500_00),
+    'description' => FFaker::Lorem.phrase,
+    'date_added' => FFaker::Time.date }
 end
