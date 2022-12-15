@@ -11,12 +11,12 @@ class SessionController < ApplicationController
   def sign_up
     email_rules
     ask_email
-    return error_message('invalid_email') unless email_validator(@email)
+    return error_message('invalid_email') unless EmailValidator.new.call(@email)
     return error_message('exist_email') if UsersController.new.show('email', @email)
 
     password_rules
     ask_password
-    return error_message('invalid_password') unless password_validator(@password)
+    return error_message('invalid_password') unless PasswordValidator.new.call(@password)
 
     save_new_user
     greeting
@@ -88,15 +88,5 @@ class SessionController < ApplicationController
 
   def error_message(error)
     puts I18n.t("errors.#{error}").colorize(:red)
-  end
-
-  def email_validator(email)
-    reg = /^\S{5,}@[\w​.]+\w+$/
-    email.match?(reg)
-  end
-
-  def password_validator(password)
-    reg = /^(?=.*[A-Z])(?=(.*[@$!%*#?&]){2}).{8,20}$/
-    password.match?(reg)
   end
 end
