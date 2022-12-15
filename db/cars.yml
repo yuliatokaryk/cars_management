@@ -1,3 +1,4 @@
+---
 - id: 1ec46226-330f-11ec-8d3d-0242ac130003
   make: Ford
   model: Fusion
@@ -68,7 +69,7 @@
   year: 2003
   odometer: 245000
   price: 10500
-  description: 'Car in very good condition, LPG installed'
+  description: Car in very good condition, LPG installed
   date_added: 28/09/21
 - id: 8841f970-330f-11ec-8d3d-0242ac130003
   make: Renault
@@ -76,7 +77,7 @@
   year: 2018
   odometer: 245000
   price: 10500
-  description: 'Car in very good condition, LPG installed'
+  description: Car in very good condition, LPG installed
   date_added: 28/09/21
 - id: 8f724eb6-330f-11ec-8d3d-0242ac130003
   make: Volkswagen
@@ -92,7 +93,7 @@
   year: 2014
   odometer: 130000
   price: 29900
-  description: 'The car is in perfect condition, fully serviced'
+  description: The car is in perfect condition, fully serviced
   date_added: 8/10/21
 - id: 9e6da960-330f-11ec-8d3d-0242ac130003
   make: Volkswagen
@@ -110,3 +111,57 @@
   price: 10650
   description: Official car
   date_added: 1/10/21
+- id: 10427-03273-373103-15340
+  make: Nissan
+  model: F150
+  year: 2019
+  odometer: 89949
+  price: 17789.0
+  description: 'Power Seats, CD (Multi Disc), Airbag: Side, Tinted Glass, A/C: Rear,
+    MP3 (Single Disc), Power Windows, MP3 (Single Disc)'
+  date_added: 2020-10-29
+- id: 43901-08292-201902-75186
+  make: Honda
+  model: Prius
+  year: 2021
+  odometer: 74360
+  price: 16968.0
+  description: 'Cruise Control, Airbag: Passenger, Rear Window Defroster, CD (Single
+    Disc), Power Windows, Alloy Wheels, Tinted Glass, Leather Interior, Tow Package'
+  date_added: 2021-11-22
+- id: 52055-62899-064606-79896
+  make: Toyota
+  model: Durango
+  year: 2015
+  odometer: 17887
+  price: 40712.0
+  description: 'Power Seats, Airbag: Passenger, Integrated Phone, Memory Seats, Airbag:
+    Driver, Fog Lights, Airbag: Driver, Tow Package'
+  date_added: 2021-04-29
+- id: 65418-33409-799782-12162
+  make: Toyota
+  model: A4
+  year: 2018
+  odometer: 11141
+  price: 17762.0
+  description: 'CD (Single Disc), Airbag: Side, Power Seats, Leather Interior, Integrated
+    Phone, MP3 (Single Disc), Power Seats'
+  date_added: 2021-03-14
+- id: 95713-23112-051865-17555
+  make: Ford
+  model: M5
+  year: 2020
+  odometer: 39365
+  price: 28819.0
+  description: 'AM/FM Stereo, MP3 (Multi Disc), Airbag: Side, Memory Seats, A/C: Front,
+    Tinted Glass, Premium Sound'
+  date_added: 2021-09-03
+- id: 58400-86949-466496-80172
+  make: Lincoln
+  model: Accord
+  year: 2019
+  odometer: 48867
+  price: 7548.0
+  description: 'Power Steering, Tinted Glass, Fog Lights, Alarm, A/C: Front, A/C:
+    Front'
+  date_added: 2020-06-12

@@ -7,3 +7,11 @@
     salt: "$2a$12$LnurrWizvb6YvcmXjkv4mu"
     checksum: 4oOsTxV5J8wcTt5Q98n/zAMAVSwNiQ6
   admin: true
+- email: julia@gmail.com
+  password: !ruby/string:BCrypt::Password
+    str: "$2a$12$JxbjcEn59FtRcsFMIspJvOi91UoCFCucjNxaYRWhjUG4L2CINxnEi"
+    version: 2a
+    cost: 12
+    salt: "$2a$12$JxbjcEn59FtRcsFMIspJvO"
+    checksum: i91UoCFCucjNxaYRWhjUG4L2CINxnEi
+  admin: false

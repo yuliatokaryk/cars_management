@@ -34,12 +34,12 @@ class MainMenu
 
   def form_user_menu
     @user_option = []
-    if !@session.current_user
-      NO_USER.each_with_index do |option, index|
+    if @session.current_user
+      USER.each_with_index do |option, index|
         @user_option << [I18n.t("session_menu.#{option}"), index.to_s.colorize(:blue)]
       end
     else
-      USER.each_with_index do |option, index|
+      NO_USER.each_with_index do |option, index|
         @user_option << [I18n.t("session_menu.#{option}"), index.to_s.colorize(:blue)]
       end
     end

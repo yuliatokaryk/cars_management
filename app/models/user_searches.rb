@@ -21,7 +21,7 @@ class UserSearches
   end
 
   def update(params) # rubocop:disable Metrics/AbcSize
-    current_user_result = @users_searchs.find { |user| user['user'] == params ['user'] }
+    current_user_result = @users_searchs.find { |user| user['user'] == params['user'] }
     current_user_result['search_rules'].each do |search|
       if search[0] == params['search_rules'][0][0]
         search << params['search_rules'][0][1]
