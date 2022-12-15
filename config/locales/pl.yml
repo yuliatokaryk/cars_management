@@ -29,7 +29,7 @@ pl:
     my_searches: Moje wyszukanie
   menu:
     welcome_message: Witamy w wyszukiwarce samochodów!
-    help: To jest aplikacja do wyszukiwania samochodów. Możesz wyświetlić listę wszystkich dostępnych samochodów lub ustawić parametry wyszukiwania.
+    help: Witamy w aplikacji do wyszukiwania samochodów. Możesz wyświetlić listę wszystkich samochodów lub znaleźć samochód zgodnie z określonymi parametrami. Jeśli masz konto, możesz przeglądać swoją historię wyszukiwania.
     end: Do widzenia!
     main_menu: MENU GŁÓWNE
     hint: Kliknij numer wybranej opcji

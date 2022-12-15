@@ -29,7 +29,7 @@ en:
     my_searches: My searches
   menu:
     welcome_message: Hello! Welcome to Cars Searcher!
-    help: This is a car finder app. You can view the list of all available cars, or set search parameters.
+    help: Welcome to the car search application. You can view the list of all cars, or find a car according to the specified parameters. If you have an account, you can view your search history.
     end: Goodbye!
     main_menu: MAIN MENU
     hint: Click the number of the selected option
