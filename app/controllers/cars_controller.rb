@@ -18,8 +18,8 @@ class CarsController < ApplicationController
     @validator = CarsValidator.new
   end
 
-  def show_all
-    database.all
+  def index
+    CarsIndex.new(database.all).call
   end
 
   def new

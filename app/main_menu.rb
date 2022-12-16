@@ -3,8 +3,8 @@
 # service of main menu
 class MainMenu
   MENU_OPTIONS = %i[search_car show_cars help exit].freeze
-  NO_USER = %i[sign_up log_in].freeze
-  USER = %i[log_out my_searches].freeze
+  NO_SESSION_OPTIONS = %i[sign_up log_in].freeze
+  SESSION_OPTIONS = %i[log_out my_searches].freeze
   ADMIN_MENU = %i[create_ad update_ad delete_ad log_out].freeze
 
   def initialize
@@ -19,6 +19,7 @@ class MainMenu
       admin_menu_response
     else
       form_user_menu
+      # MenuIndex.new(MENU_OPTIONS).show_menu_option
       show_menu_option
       menu_request
       menu_response
@@ -35,11 +36,11 @@ class MainMenu
   def form_user_menu
     @user_option = []
     if @session.current_user
-      USER.each_with_index do |option, index|
+      SESSION_OPTIONS.each_with_index do |option, index|
         @user_option << [I18n.t("session_menu.#{option}"), index.to_s.colorize(:blue)]
       end
     else
-      NO_USER.each_with_index do |option, index|
+      NO_SESSION_OPTIONS.each_with_index do |option, index|
         @user_option << [I18n.t("session_menu.#{option}"), index.to_s.colorize(:blue)]
       end
     end
@@ -113,7 +114,7 @@ end
 def cars_option
   case @user_choise
   when '2' then App.new(@session.current_user['email']).call
-  when '3' then ShowCars.new.call
+  when '3' then CarsController.new.index
   when '4' then puts I18n.t('menu.help').colorize(:light_blue)
   when '5' then return puts I18n.t('menu.end').colorize(:green)
   end

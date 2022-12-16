@@ -32,3 +32,7 @@ require_relative '../lib/database'
 require_relative '../app/validations/cars_validator'
 require_relative '../app/validations/password_validator'
 require_relative '../app/validations/email_validator'
+
+# views
+require_relative '../app/views/menu/index'
+require_relative '../app/views/cars/index'
