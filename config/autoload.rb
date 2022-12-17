@@ -25,7 +25,6 @@ require_relative '../app/input_collector'
 require_relative '../app/main_menu'
 require_relative '../app/output_manager'
 require_relative '../app/sorting_manager'
-require_relative '../app/show_cars'
 require_relative '../lib/database'
 
 # validations
@@ -34,5 +33,4 @@ require_relative '../app/validations/password_validator'
 require_relative '../app/validations/email_validator'
 
 # views
-require_relative '../app/views/menu/index'
 require_relative '../app/views/cars/index'
