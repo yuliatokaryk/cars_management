@@ -43,6 +43,7 @@ class App
 
   def users_searches_controller
     d = Time.now.strftime('%d/%m/%Y')
-    UsersSearchesController.new({ 'user' => @user, 'search_rules' => [[{ 'date' => d }, input_collector.rules]] }).save
+    user = @user['email']
+    UsersSearchesController.new({ 'user' => user, 'search_rules' => [[{ 'date' => d }, input_collector.rules]] }).save
   end
 end
