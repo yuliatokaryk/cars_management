@@ -22,11 +22,6 @@ pl:
     rule1: 1. mieć format emailu
     rule2: 2. mieć co najmniej 5 charakterów przed @
     rule3: 3. być unikalny
-  session_menu:
-    sign_up: Zarejestrować się
-    log_in: Zalogować się
-    log_out: Wylogować się
-    my_searches: Moje wyszukanie
   menu:
     welcome_message: Witamy w wyszukiwarce samochodów!
     help: Witamy w aplikacji do wyszukiwania samochodów. Możesz wyświetlić listę wszystkich samochodów lub znaleźć samochód zgodnie z określonymi parametrami. Jeśli masz konto, możesz przeglądać swoją historię wyszukiwania.
@@ -34,6 +29,10 @@ pl:
     main_menu: MENU GŁÓWNE
     hint: Kliknij numer wybranej opcji
   menu_options:
+    sign_up: Zarejestrować się
+    log_in: Zalogować się
+    log_out: Wylogować się
+    my_searches: Moje wyszukanie
     search_car: Wyszukaj samochód
     show_cars: Pokaż wszystkie samochody
     help: Pomoc

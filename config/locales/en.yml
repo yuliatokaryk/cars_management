@@ -22,11 +22,6 @@ en:
     rule1: 1. have email-type format
     rule2: 2. have at least 5 symbols before @
     rule3: 3. be unique
-  session_menu:
-    sign_up: Sign up
-    log_in: Log in
-    log_out: Log out
-    my_searches: My searches
   menu:
     welcome_message: Hello! Welcome to Cars Searcher!
     help: Welcome to the car search application. You can view the list of all cars, or find a car according to the specified parameters. If you have an account, you can view your search history.
@@ -34,6 +29,10 @@ en:
     main_menu: MAIN MENU
     hint: Click the number of the selected option
   menu_options:
+    sign_up: Sign up
+    log_in: Log in
+    log_out: Log out
+    my_searches: My searches
     search_car: Search a car
     show_cars: Show all cars
     help: Help
