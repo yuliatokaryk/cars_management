@@ -47,12 +47,11 @@ class SessionController < ApplicationController
   end
 
   def email_rules
-    table = Terminal::Table.new title: I18n.t('email_rules.email_hint').to_s.colorize(:yellow) do |t|
-      EMAIL_RULES.each do |rule|
-        t << [I18n.t("email_rules.#{rule}").colorize(:light_blue)]
-      end
+    rules = []
+    EMAIL_RULES.each do |rule|
+      rules << I18n.t("email_rules.#{rule}")
     end
-    puts table
+    Hint.new(rules).call
   end
 
   def ask_password
@@ -61,12 +60,11 @@ class SessionController < ApplicationController
   end
 
   def password_rules
-    table = Terminal::Table.new title: I18n.t('password_rules.password_hint').to_s.colorize(:yellow) do |t|
-      PASSWORD_RULES.each do |rule|
-        t << [I18n.t("password_rules.#{rule}").colorize(:light_blue)]
-      end
+    rules = []
+    PASSWORD_RULES.each do |rule|
+      rules << I18n.t("password_rules.#{rule}")
     end
-    puts table
+    Hint.new(rules).call
   end
 
   def save_new_user

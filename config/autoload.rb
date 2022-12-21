@@ -37,6 +37,7 @@ require_relative '../app/views/cars/index'
 require_relative '../app/views/menu/admin'
 require_relative '../app/views/menu/user'
 require_relative '../app/views/statistics/statistics'
+require_relative '../app/views/hint/index'
 
 # services
 require_relative '../app/services/app_service'

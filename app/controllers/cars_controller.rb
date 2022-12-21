@@ -94,12 +94,11 @@ class CarsController < ApplicationController
   end
 
   def rule_message(rule)
-    table = Terminal::Table.new title: I18n.t("cars_params.#{rule}").to_s.capitalize.colorize(:yellow) do |t|
-      INPUT_RULES[rule].each do |el|
-        t << [I18n.t("add_rules.#{rule}.#{el}").colorize(:light_blue)]
-      end
+    rules = []
+    INPUT_RULES[rule].each do |el|
+      rules << I18n.t("add_rules.#{rule}.#{el}")
     end
-    puts table
+    Hint.new(rules).call
   end
 
   def edit_manager

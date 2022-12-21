@@ -1,8 +1,17 @@
 # frozen_string_literal: true
 
-# service to generate hint index view
-class HintIndex
+# service to generate hint view
+class Hint
+  def initialize(hints)
+    @hints = hints
+  end
+
   def call
-    puts I18n.t('menu.help').colorize(:light_blue)
+    table = Terminal::Table.new do |t|
+      @hints.each do |hint|
+        t << [hint.colorize(:blue)]
+      end
+    end
+    puts table
   end
 end
