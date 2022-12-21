@@ -10,9 +10,10 @@ class App
     input_collector.call
     searcher.call
     sorted_result = sorting_manager.call
-    statistics_manager.call
+    statistics_manager
     users_searches_controller if @user
-    OutputManager.new(sorted_result, statistics_manager.search_element).call
+    OutputManager.new(sorted_result).call
+    StatisticsController.new.show(input_collector.rules)
   end
 
   private
@@ -38,7 +39,7 @@ class App
   end
 
   def statistics_manager
-    @statistics_manager ||= StatisticsManager.new(statistics_db, input_collector.rules, searcher.total_quantity)
+    StatisticsController.new({ 'rules' => input_collector.rules, 'total_quantity' => searcher.total_quantity }).add
   end
 
   def users_searches_controller
