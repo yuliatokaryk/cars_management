@@ -33,16 +33,15 @@ require_relative '../app/validations/password_validator'
 require_relative '../app/validations/email_validator'
 
 # views
-require_relative '../app/views/cars/index'
-require_relative '../app/views/menu/admin'
-require_relative '../app/views/menu/user'
-require_relative '../app/views/statistics/statistics'
-require_relative '../app/views/hint/index'
+require_relative '../app/views/cars'
+require_relative '../app/views/menu'
+require_relative '../app/views/statistics'
+require_relative '../app/viewsflash'
+require_relative '../app/views/user_searches'
 
 # services
+require_relative '../app/services/search_manager'
 require_relative '../app/services/app_service'
-require_relative '../app/services/app'
 require_relative '../app/services/cars_searcher'
 require_relative '../app/services/input_collector'
-require_relative '../app/services/output_manager'
 require_relative '../app/services/sorting_manager'
