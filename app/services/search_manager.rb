@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# App main class
-class App
+# Search manager class
+class SearchManager
   def initialize(user)
     @user = user
   end
@@ -12,7 +12,7 @@ class App
     sorted_result = sorting_manager.call
     statistics_manager
     users_searches_controller if @user
-    OutputManager.new(sorted_result).call
+    Cars.new(sorted_result).index
     StatisticsController.new.show(input_collector.rules)
   end
 
