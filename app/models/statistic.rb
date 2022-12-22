@@ -3,11 +3,11 @@
 # Statistic Model
 class Statistic < ApplicationRecord
   def find(rules)
-    data_list.find { |search_request| search_request['params'] == rules }
+    all.find { |search_request| search_request['params'] == rules }
   end
 
   def create(element)
-    statistics = data_list
+    statistics = all
     statistics << element
     update_db(statistics)
   end
