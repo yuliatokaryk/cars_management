@@ -9,26 +9,24 @@ class SessionController < ApplicationController
   @current_user = nil
 
   def sign_up
-    email_rules
+    rules_message('email_rules', EMAIL_RULES)
     ask_email
-    return error('invalid_email') unless EmailValidator.new.call(@email)
-    return error('exist_email') if UsersController.new.show('email', @email)
+    return error('invalid_email') unless email_validator.call(@email)
+    return error('exist_email') if users.find_by('email', @email)
 
-    password_rules
-    ask_password
-    return error('invalid_password') unless PasswordValidator.new.call(@password)
+    rules_message('password_rules', PASSWORD_RULES)
+    return error('invalid_password') unless password_validator.call(ask_password)
 
     save_new_user
     greeting
   end
 
   def log_in
-    ask_email
-    user = UsersController.new.show('email', @email)
+    user = users.find_by('email', ask_email)
+
     return error('no_exist_email') unless user
 
-    ask_password
-    return error('invalid_password') unless UsersController.new.check_password(user, @password)
+    return error('invalid_password') unless user['password'] == ask_password
 
     @current_user = user
     greeting
@@ -41,6 +39,31 @@ class SessionController < ApplicationController
 
   private
 
+  def ask_email
+    flash.question(I18n.t('user.enter_email'))
+    @email = gets.chomp
+  end
+
+  def ask_password
+    flash.question(I18n.t('user.enter_password'))
+    @password = gets.chomp
+  end
+
+  def save_new_user
+    password = BCrypt::Password.create(@password)
+    user = { 'email' => @email, 'password' => password, 'admin' => false }
+    users.create(user)
+    @current_user = user
+  end
+
+  def rules_message(option, rules)
+    rules_array = []
+    rules.each do |rule|
+      rules_array << I18n.t("flash.hint.#{option}.#{rule}")
+    end
+    flash.hint(I18n.t("flash.hint.#{option}.title"), rules_array)
+  end
+
   def greeting
     flash.message(["#{I18n.t('user.greeting')}, #{@current_user['email']}!"])
   end
@@ -50,39 +73,18 @@ class SessionController < ApplicationController
   end
 
   def error(error_message)
-    flash.error(error_message)
+    flash.error([I18n.t("flash.error.#{error_message}")])
   end
 
-  def ask_email
-    flash.question(I18n.t('user.enter_email'))
-    @email = gets.chomp
+  def users
+    @users ||= User.new('users')
   end
 
-  def email_rules
-    rules = []
-    EMAIL_RULES.each do |rule|
-      rules << I18n.t("email_rules.#{rule}")
-    end
-    flash.hint(rules)
+  def password_validator
+    @password_validator ||= PasswordValidator.new
   end
 
-  def ask_password
-    flash.question(I18n.t('user.enter_password'))
-    @password = gets.chomp
-  end
-
-  def password_rules
-    rules = []
-    PASSWORD_RULES.each do |rule|
-      rules << I18n.t("password_rules.#{rule}")
-    end
-    flash.hint(rules)
-  end
-
-  def save_new_user
-    password = BCrypt::Password.create(@password)
-    user = UsersController.new({ 'email' => @email, 'password' => password, 'admin' => false })
-    user.create
-    @current_user = user.params
+  def email_validator
+    @email_validator ||= EmailValidator.new
   end
 end
