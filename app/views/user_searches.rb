@@ -5,11 +5,11 @@ class UserSearches
   def show(results)
     puts I18n.t('user_searches.searches_title').colorize(:green)
     results.each do |result|
-      create_search_table(result)
+      show_day_result(result)
     end
   end
 
-  def create_search_table(search_result)
+  def show_day_result(search_result)
     table = Terminal::Table.new title: search_result[0]['date'].colorize(:yellow) do |t|
       search_result[1..].each do |search|
         row = []

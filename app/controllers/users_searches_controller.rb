@@ -6,7 +6,7 @@ class UsersSearchesController < ApplicationController
 
   def show
     user_searches = database.find(params['user'])
-    user_searches ? view.show(user_searches['search_rules']) : flash.error('error_searches')
+    user_searches ? view.show(user_searches['search_rules']) : error('error_searches')
   end
 
   def save
