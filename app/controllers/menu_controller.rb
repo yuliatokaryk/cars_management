@@ -10,7 +10,7 @@ class MenuController < ApplicationController
   def admin
     options = {}
     ADMIN_OPTIONS.each_with_index { |option, index| options[option] = index }
-    menu.index(options)
+    view.index(options)
   end
 
   def user(current_user)
@@ -23,12 +23,12 @@ class MenuController < ApplicationController
 
     MENU_OPTIONS.each_with_index { |option, index| options[option] = index + 2 }
 
-    menu.index(options)
+    view.index(options)
   end
 
   private
 
-  def menu
-    @menu ||= Menu.new
+  def view
+    @view ||= Menu.new
   end
 end
