@@ -13,13 +13,12 @@ class CarsController < ApplicationController
 
   CAR_RULES = %w[make model year odometer price description].freeze
 
-  def initialize
-    super
-    @validator = CarsValidator.new
+  def index
+    cars.index(database.all)
   end
 
-  def index
-    CarsIndex.new(database.all).call
+  def show(user)
+    SearchManager.new(user).call
   end
 
   def new
@@ -31,7 +30,7 @@ class CarsController < ApplicationController
 
   def edit
     id = target_id
-    return error_message('errors.car_not_found') unless database.find_by('id', id)
+    return flash.error('car_not_found') unless database.find_by('id', id)
 
     params['id'] = id
     edit_manager
@@ -39,30 +38,30 @@ class CarsController < ApplicationController
 
   def create
     database.create(params)
-    success_message('ad_action.ad_create')
+    flash.message(['ad_action.ad_create'])
   end
 
   def update
     database.update(params)
-    success_message('ad_action.ad_update')
+    flash.message(['ad_action.ad_update'])
   end
 
   def destroy
     id = target_id
-    return error_message('errors.car_not_found') unless database.find_by('id', id)
+    return flash.error('car_not_found') unless database.find_by('id', id)
 
     database.delete(id)
-    success_message('ad_action.ad_delete')
+    flash.message(['ad_action.ad_delete'])
   end
 
   private
 
   def database
-    Car.new('cars')
+    @database ||= Car.new('cars')
   end
 
   def target_id
-    puts "#{I18n.t('admin_actions.ask_id')}:".colorize(:blue)
+    flash.question(I18n.t('admin_actions.ask_id'))
     gets.chomp
   end
 
@@ -77,10 +76,10 @@ class CarsController < ApplicationController
   def add_car_rules
     CAR_RULES.each do |rule|
       rule_message(rule)
-      puts "#{I18n.t("cars_params.#{rule}")}:".capitalize.colorize(:blue)
+      flash.question(I18n.t("cars_params.#{rule}"))
       value = gets.chomp
       unless @validator.call(rule, value)
-        puts error_message('errors.invalid_car_rule')
+        puts flash.error('invalid_car_rule')
         break
       end
       save_value(rule, value)
@@ -98,15 +97,11 @@ class CarsController < ApplicationController
     INPUT_RULES[rule].each do |el|
       rules << I18n.t("add_rules.#{rule}.#{el}")
     end
-    Hint.new(rules).call
+    flash.hint(rules)
   end
 
   def edit_manager
-    table = Terminal::Table.new title: I18n.t('admin_actions.edit_title_hint').to_s.colorize(:yellow) do |t|
-      t << CAR_RULES
-      t << [*0..CAR_RULES.length - 1]
-    end
-    puts table
+    cars.edit(CAR_RULES)
     edit_input
   end
 
@@ -119,9 +114,17 @@ class CarsController < ApplicationController
 
   def edit_rule(index)
     rule = CAR_RULES[index.to_i]
-    puts "#{I18n.t('admin_actions.edit_rule')}. #{I18n.t("cars_params.#{rule}")}:".colorize(:blue)
+    flash.question("#{I18n.t('admin_actions.edit_rule')}. #{I18n.t("cars_params.#{rule}")}:")
     value = gets.chomp
-    save_value(rule, value) if @validator.call(rule, value)
+    save_value(rule, value) if validator.call(rule, value)
     edit_manager
+  end
+
+  def cars
+    @cars ||= Cars.new
+  end
+
+  def validator
+    @validator = CarsValidator.new
   end
 end

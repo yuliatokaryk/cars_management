@@ -8,14 +8,18 @@ class MenuController < ApplicationController
   ADMIN_OPTIONS = %i[create_ad update_ad delete_ad log_out].freeze
 
   def admin
-    AdminMenu.new.call(ADMIN_OPTIONS)
+    menu.admin(ADMIN_OPTIONS)
   end
 
   def user(user)
-    if user
-      UserMenu.new.call(USER_OPTIONS, MENU_OPTIONS)
-    else
-      UserMenu.new.call(GUEST_OPTIONS, MENU_OPTIONS)
-    end
+    return menu.user(USER_OPTIONS, MENU_OPTIONS) if user
+
+    menu.user(GUEST_OPTIONS, MENU_OPTIONS)
+  end
+
+  private
+
+  def menu
+    @menu ||= Menu.new
   end
 end

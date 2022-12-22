@@ -33,6 +33,6 @@ class StatisticsController < ApplicationController
   end
 
   def database
-    Statistic.new('searches')
+    @database ||= Statistic.new('searches')
   end
 end

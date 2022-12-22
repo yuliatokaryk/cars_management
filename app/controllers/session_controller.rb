@@ -11,12 +11,12 @@ class SessionController < ApplicationController
   def sign_up
     email_rules
     ask_email
-    return error_message('invalid_email') unless EmailValidator.new.call(@email)
-    return error_message('exist_email') if UsersController.new.show('email', @email)
+    return error('invalid_email') unless EmailValidator.new.call(@email)
+    return error('exist_email') if UsersController.new.show('email', @email)
 
     password_rules
     ask_password
-    return error_message('invalid_password') unless PasswordValidator.new.call(@password)
+    return error('invalid_password') unless PasswordValidator.new.call(@password)
 
     save_new_user
     greeting
@@ -25,10 +25,10 @@ class SessionController < ApplicationController
   def log_in
     ask_email
     user = UsersController.new.show('email', @email)
-    return error_message('no_exist_email') unless user
+    return error('no_exist_email') unless user
 
     ask_password
-    return error_message('invalid_password') unless UsersController.new.check_password(user, @password)
+    return error('invalid_password') unless UsersController.new.check_password(user, @password)
 
     @current_user = user
     greeting
@@ -41,8 +41,20 @@ class SessionController < ApplicationController
 
   private
 
+  def greeting
+    flash.message(["#{I18n.t('user.greeting')}, #{@current_user['email']}!"])
+  end
+
+  def farewell
+    flash.message(["#{I18n.t('user.farewell')}, #{@current_user['email']}!"])
+  end
+
+  def error(error_message)
+    flash.error(error_message)
+  end
+
   def ask_email
-    puts I18n.t('user.enter_email').colorize(:blue)
+    flash.question(I18n.t('user.enter_email'))
     @email = gets.chomp
   end
 
@@ -51,11 +63,11 @@ class SessionController < ApplicationController
     EMAIL_RULES.each do |rule|
       rules << I18n.t("email_rules.#{rule}")
     end
-    Hint.new(rules).call
+    flash.hint(rules)
   end
 
   def ask_password
-    puts I18n.t('user.enter_password').colorize(:blue)
+    flash.question(I18n.t('user.enter_password'))
     @password = gets.chomp
   end
 
@@ -64,7 +76,7 @@ class SessionController < ApplicationController
     PASSWORD_RULES.each do |rule|
       rules << I18n.t("password_rules.#{rule}")
     end
-    Hint.new(rules).call
+    flash.hint(rules)
   end
 
   def save_new_user
@@ -72,19 +84,5 @@ class SessionController < ApplicationController
     user = UsersController.new({ 'email' => @email, 'password' => password, 'admin' => false })
     user.create
     @current_user = user.params
-  end
-
-  def greeting
-    rows = [["#{I18n.t('user.greeting')}, #{@current_user['email']}!".colorize(:green)]]
-    puts Terminal::Table.new rows: rows
-  end
-
-  def farewell
-    rows = [["#{I18n.t('user.farewell')}, #{@current_user['email']}!".colorize(:green)]]
-    puts Terminal::Table.new rows: rows
-  end
-
-  def error_message(error)
-    puts I18n.t("errors.#{error}").colorize(:red)
   end
 end

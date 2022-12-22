@@ -19,6 +19,6 @@ class UsersController < ApplicationController
   private
 
   def database
-    User.new
+    @database ||= User.new
   end
 end

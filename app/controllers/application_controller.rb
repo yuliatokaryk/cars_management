@@ -13,4 +13,8 @@ class ApplicationController
   def success_message(message)
     puts I18n.t(message).colorize(:green)
   end
+
+  def flash
+    @flash ||= Flash.new
+  end
 end
