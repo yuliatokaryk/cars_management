@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# service to validate email rules
+# service to validate email
 class EmailValidator
   def call(email)
     reg = /^\S{5,}@[\w​.]+\w+$/
