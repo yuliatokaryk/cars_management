@@ -11,8 +11,4 @@ class Statistic < ApplicationRecord
     statistics << element
     update_db(statistics)
   end
-
-  def update(statistics)
-    update_db(statistics)
-  end
 end

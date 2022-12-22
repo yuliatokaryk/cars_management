@@ -29,7 +29,7 @@ class StatisticsController < ApplicationController
     search_element = statistics.find { |search_request| search_request['params'] == @params['rules'] }
     search_element['total_quantity'] = @params['total_quantity']
     search_element['requests_quantity'] += 1
-    database.update(statistics)
+    database.update_db(statistics)
   end
 
   def database
