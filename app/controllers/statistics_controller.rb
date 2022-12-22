@@ -7,7 +7,7 @@ class StatisticsController < ApplicationController
   end
 
   def show(rules)
-    Statistics.new.show(database.find(rules))
+    view.show(database.find(rules))
   end
 
   private
@@ -34,5 +34,9 @@ class StatisticsController < ApplicationController
 
   def database
     @database ||= Statistic.new('searches')
+  end
+
+  def view
+    @view ||= Statistics.new
   end
 end
