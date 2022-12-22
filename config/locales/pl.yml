@@ -1,4 +1,24 @@
 pl:
+  menu:
+    main_menu: MENU GŁÓWNE
+    title: Kliknij numer wybranej opcji
+    sign_up: Zarejestrować się
+    log_in: Zalogować się
+    log_out: Wylogować się
+    my_searches: Moje wyszukanie
+    search_car: Wyszukaj samochód
+    show_cars: Pokaż wszystkie samochody
+    help: Pomoc
+    exit: Wyjście
+    create_ad: Utwórz ogłoszenie
+    update_ad: Zaktualizuj ogłoszenie
+    delete_ad: Usuń ogłoszenie
+  flash:
+    messages:
+      welcome_message: Witamy w wyszukiwarce samochodów!
+      farewell_message: Do widzenia!
+    hint: 
+      help: Witamy w aplikacji do wyszukiwania samochodów. Możesz wyświetlić listę wszystkich samochodów lub znaleźć samochód zgodnie z określonymi parametrami. Jeśli masz konto, możesz przeglądać swoją historię wyszukiwania.
   user:
     enter_email: Wpisz adres e-mail
     enter_password: Wpisz hasło
@@ -11,6 +31,7 @@ pl:
     no_exist_email: Adres e-mail jest nie zarejestrowany
     invalid_car_rule: Dane są błędne
     car_not_found: Nie znaleziono samochodu
+    error_searches: Nie przeprowadziłeś jeszcze żadnych wyszukiwań.
   password_rules:
     password_hint: Hasło musi składać się z
     rule1: 1. co najmniej 1 wielkiej litery
@@ -22,21 +43,7 @@ pl:
     rule1: 1. mieć format emailu
     rule2: 2. mieć co najmniej 5 charakterów przed @
     rule3: 3. być unikalny
-  menu:
-    welcome_message: Witamy w wyszukiwarce samochodów!
-    help: Witamy w aplikacji do wyszukiwania samochodów. Możesz wyświetlić listę wszystkich samochodów lub znaleźć samochód zgodnie z określonymi parametrami. Jeśli masz konto, możesz przeglądać swoją historię wyszukiwania.
-    end: Do widzenia!
-    main_menu: MENU GŁÓWNE
-    hint: Kliknij numer wybranej opcji
-  menu_options:
-    sign_up: Zarejestrować się
-    log_in: Zalogować się
-    log_out: Wylogować się
-    my_searches: Moje wyszukanie
-    search_car: Wyszukaj samochód
-    show_cars: Pokaż wszystkie samochody
-    help: Pomoc
-    exit: Wyjście
+
   general:
     rules_beginning: Wybierz kryteria wyszukiwania.
     choose_request: Proszę wybrać
@@ -64,13 +71,7 @@ pl:
     requests_quantity: Liczba wyszukiwań według określonych parametrów
     result_fail: Przepraszamy, brak wyników z podanymi parametrami
   user_searches:
-    error_message: Nie przeprowadziłeś jeszcze żadnych wyszukiwań.
     searches_title: Twoje Wyszukiwania
-  adnin_menu_options: 
-    create_ad: Utwórz ogłoszenie
-    update_ad: Zaktualizuj ogłoszenie
-    delete_ad: Usuń ogłoszenie
-    log_out: Wyloguj
   add_rules:
     add_rule_enter_message: Proszę wpisać
     make: 

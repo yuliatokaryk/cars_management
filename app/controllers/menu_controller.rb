@@ -8,13 +8,22 @@ class MenuController < ApplicationController
   ADMIN_OPTIONS = %i[create_ad update_ad delete_ad log_out].freeze
 
   def admin
-    menu.admin(ADMIN_OPTIONS)
+    options = {}
+    ADMIN_OPTIONS.each_with_index { |option, index| options[option] = index }
+    menu.index(options)
   end
 
-  def user(user)
-    return menu.user(USER_OPTIONS, MENU_OPTIONS) if user
+  def user(current_user)
+    options = {}
+    if current_user
+      USER_OPTIONS.each_with_index { |option, index| options[option] = index }
+    else
+      GUEST_OPTIONS.each_with_index { |option, index| options[option] = index }
+    end
 
-    menu.user(GUEST_OPTIONS, MENU_OPTIONS)
+    MENU_OPTIONS.each_with_index { |option, index| options[option] = index + 2 }
+
+    menu.index(options)
   end
 
   private

@@ -1,4 +1,24 @@
 en:
+  menu:
+    main_menu: MAIN MENU
+    title: Click the number of the selected option
+    sign_up: Sign up
+    log_in: Log in
+    log_out: Log out
+    my_searches: My searches
+    search_car: Search a car
+    show_cars: Show all cars
+    help: Help
+    exit: Exit
+    create_ad: Create an Advertisement
+    update_ad: Update an Advertisement
+    delete_ad: Delete an Advertisement
+  flash:
+    messages:
+      welcome_message: Hello! Welcome to Cars Searcher!
+      farewell_message: Goodbye!
+    hint: 
+      help: Welcome to the car search application. You can view the list of all cars, or find a car according to the specified parameters. If you have an account, you can view your search history.
   user:
     enter_email: Enter email address
     enter_password: Enter password
@@ -11,6 +31,7 @@ en:
     no_exist_email: The email address not registered
     invalid_car_rule: Input is not valid
     car_not_found: Car not found
+    error_searches: You haven't made any searches yet.
   password_rules:
     password_hint: Password must consist of
     rule1: 1. at least 1 capital letter
@@ -22,21 +43,6 @@ en:
     rule1: 1. have email-type format
     rule2: 2. have at least 5 symbols before @
     rule3: 3. be unique
-  menu:
-    welcome_message: Hello! Welcome to Cars Searcher!
-    help: Welcome to the car search application. You can view the list of all cars, or find a car according to the specified parameters. If you have an account, you can view your search history.
-    end: Goodbye!
-    main_menu: MAIN MENU
-    hint: Click the number of the selected option
-  menu_options:
-    sign_up: Sign up
-    log_in: Log in
-    log_out: Log out
-    my_searches: My searches
-    search_car: Search a car
-    show_cars: Show all cars
-    help: Help
-    exit: Exit
   general:
     rules_beginning: Please select search rules.
     choose_request: Pleace choose
@@ -64,13 +70,7 @@ en:
     requests_quantity: Requests Quantity
     result_fail: Sorry, there no results
   user_searches:
-    error_message: You haven't made any searches yet.
     searches_title: Your Searches
-  adnin_menu_options: 
-    create_ad: Create an Advertisement
-    update_ad: Update an Advertisement
-    delete_ad: Delete an Advertisement
-    log_out: Log out
   add_rules:
     add_rule_enter_message: Please enter
     make: 
