@@ -5,19 +5,17 @@ class AppService
   def initialize
     set_language
     welcome_message
-    @session = SessionController.new
-    @menu = MenuController.new
   end
 
   def call
-    if @session.current_user && @session.current_user['admin'] == true
-      @menu.admin
+    if session.current_user && @session.current_user['admin'] == true
+      menu.admin
       menu_request
-      admin_menu_response
+      admin_response
     else
-      @menu.user(@session.current_user)
+      menu.user(session.current_user)
       menu_request
-      menu_response
+      user_response
     end
   end
 
@@ -28,60 +26,79 @@ class AppService
   end
 
   def welcome_message
-    row = [[I18n.t('menu.welcome_message').colorize(:green)]]
-    puts Terminal::Table.new rows: row
+    flash.message([I18n.t('flash.message.welcome_message')])
+  end
+
+  def farewell_message
+    flash.message([I18n.t('flash.message.farewell_message')])
+  end
+
+  def hint_message
+    flash.hint([I18n.t('flash.hint.help')])
   end
 
   def menu_request
     @user_choise = gets.chomp
   end
 
-  def admin_menu_response
+  def admin_response
     case @user_choise
-    when '0' then CarsController.new.new
-    when '1' then CarsController.new.edit
-    when '2' then CarsController.new.destroy
-    when '3' then @session.log_out
+    when '0' then cars.new
+    when '1' then cars.edit
+    when '2' then cars.destroy
+    when '3' then session.log_out
     end
     call
   end
 
-  def menu_response
+  def user_response
     case @user_choise
     when '0', '1' then sesion_option
-    when '2', '3', '4', '5' then cars_option
-    else
-      call
+    when '2', '3' then cars_option
+    when '4' then hint_message
+    when '5' then return farewell_message
     end
+    call
   end
 
   def sesion_option
-    @session.current_user ? user_menu : no_user_menu
+    session.current_user ? user_menu : guest_menu
   end
 
   def user_menu
     case @user_choise
-    when '0' then @session.log_out
-    when '1' then UsersSearchesController.new({ 'user' => @session.current_user['email'] }).show
+    when '0' then session.log_out
+    when '1' then UsersSearchesController.new({ 'user' => session.current_user['email'] }).show
     end
-    call
   end
 
-  def no_user_menu
+  def guest_menu
     case @user_choise
-    when '0' then @session.sign_up
-    when '1' then @session.log_in
+    when '0' then session.sign_up
+    when '1' then session.log_in
     end
-    call
   end
 
   def cars_option
     case @user_choise
-    when '2' then App.new(@session.current_user).call
-    when '3' then CarsController.new.index
-    when '4' then Hint.new([I18n.t('menu.help')]).call
-    when '5' then return puts I18n.t('menu.end').colorize(:green)
+    when '2' then cars.show(session.current_user)
+    when '3' then cars.index
     end
-    call
+  end
+
+  def session
+    @session ||= SessionController.new
+  end
+
+  def menu
+    @menu ||= MenuController.new
+  end
+
+  def cars
+    @cars ||= CarsController.new
+  end
+
+  def flash
+    @flash ||= Flash.new
   end
 end
