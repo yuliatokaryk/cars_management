@@ -7,20 +7,16 @@ class ApplicationRecord
   end
 
   def all
-    data_list
+    database.fetch
+  end
+
+  def update_db(updated_data)
+    database.update(updated_data)
   end
 
   private
 
   def database
     Database.new(@db_name)
-  end
-
-  def data_list
-    database.fetch
-  end
-
-  def update_db(updated_data)
-    database.update(updated_data)
   end
 end

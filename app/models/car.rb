@@ -3,12 +3,12 @@
 # Car Model
 class Car < ApplicationRecord
   def find_by(param, value)
-    @cars = data_list
+    @cars = all
     @car = @cars.find { |car| car[param] == value }
   end
 
   def create(car)
-    cars = data_list
+    cars = all
     cars << car
     update_db(cars)
   end
