@@ -2,8 +2,9 @@
 
 # Search manager class
 class SearchManager
-  def initialize(user)
+  def initialize(user, cars)
     @user = user
+    @cars = cars
   end
 
   def call
@@ -12,15 +13,11 @@ class SearchManager
     sorted_result = sorting_manager.call
     statistics_manager
     users_searches_controller if @user
-    Cars.new(sorted_result).index
+    Cars.new.index(sorted_result)
     StatisticsController.new.show(input_collector.rules)
   end
 
   private
-
-  def cars_db
-    @cars_db ||= Database.new('cars')
-  end
 
   def statistics_db
     @statistics_db ||= Database.new('searches')
@@ -31,7 +28,7 @@ class SearchManager
   end
 
   def searcher
-    @searcher ||= CarsSearcher.new(cars_db, input_collector.rules)
+    @searcher ||= CarsSearcher.new(@cars, input_collector.rules)
   end
 
   def sorting_manager
