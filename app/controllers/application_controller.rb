@@ -6,10 +6,6 @@ class ApplicationController
     @params = params
   end
 
-  def flash
-    @flash ||= Flash.new
-  end
-
   def error(error_message)
     flash.error([I18n.t("flash.error.#{error_message}")])
   end
@@ -20,5 +16,9 @@ class ApplicationController
 
   def question(question_message)
     flash.question(I18n.t("flash.question.#{question_message}"))
+  end
+
+  def flash
+    @flash ||= Flash.new
   end
 end

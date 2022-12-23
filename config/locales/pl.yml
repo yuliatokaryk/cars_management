@@ -1,111 +1,131 @@
 pl:
   menu:
-    main_menu: MENU GŁÓWNE
-    title: Kliknij numer wybranej opcji
-    sign_up: Zarejestrować się
-    log_in: Zalogować się
-    log_out: Wylogować się
-    my_searches: Moje wyszukanie
-    search_car: Wyszukaj samochód
-    show_cars: Pokaż wszystkie samochody
+    title: Kliknij numer wybranej funkcji
+    sign_up: Zapisz się
+    log_in: Zaloguj się do swojego profilu
+    log_out: Wyjdź z profilu
+    my_searches: Moje wyszukiwania
+    search_car: Znajdź samochód
+    show_cars: Zobacz wszystkie samochody
     help: Pomoc
-    exit: Wyjście
-    create_ad: Utwórz ogłoszenie
-    update_ad: Zaktualizuj ogłoszenie
-    delete_ad: Usuń ogłoszenie
+    exit: Zamknij aplikację
+    create_ad: Utwórz reklamę
+    update_ad: Edytuj reklamę
+    delete_ad: Usuń reklamę
+  statistics:
+    title: Statystyka
+    total_quantity: Łączna liczba wyników
+    requests_quantity: Liczba wyszukiwań
   flash:
-    messages:
-      welcome_message: Witamy w wyszukiwarce samochodów!
-      farewell_message: Do widzenia!
+    help: 
+      hint_1: Przeczytaj opcje menu;
+      hint_2: Wpisz numer wybranej;
+      hint_3: Użyj swojego profilu, aby zapisać historię wyszukiwania.
+    message:
+      welcome_message: Cześć! Witamy w aplikacji do wyszukiwania samochodów!
+      farewell_message: Do zobaczenia!
+      advert:
+        create: Reklama została pomyślnie utworzona
+        update: Reklama została pomyślnie zaktualizowana
+        delete: Reklama została pomyślnie usunięta
+      user:
+        greeting: Witamy
+        farewell: Do zobaczenia
     hint: 
       help: Witamy w aplikacji do wyszukiwania samochodów. Możesz wyświetlić listę wszystkich samochodów lub znaleźć samochód zgodnie z określonymi parametrami. Jeśli masz konto, możesz przeglądać swoją historię wyszukiwania.
-  user:
-    enter_email: Wpisz adres e-mail
-    enter_password: Wpisz hasło
-    greeting: Witam
-    farewell: Do zobaczenia później
-  errors:
-    invalid_email: Adres email jest błędny
-    exist_email: Adres e-mail jest już zarejestrowany 
-    invalid_password: Hasło jest błędne
-    no_exist_email: Adres e-mail jest nie zarejestrowany
-    invalid_car_rule: Dane są błędne
-    car_not_found: Nie znaleziono samochodu
-    error_searches: Nie przeprowadziłeś jeszcze żadnych wyszukiwań.
-  password_rules:
-    password_hint: Hasło musi składać się z
-    rule1: 1. co najmniej 1 wielkiej litery
-    rule2: 2. co najmniej 2 specjalny charakterów
-    rule3: 3. co najmniej 8 znaków
-    rule4: 4. nie więcej niż 20 znaków
-  email_rules:
-    email_hint: Email musi
-    rule1: 1. mieć format emailu
-    rule2: 2. mieć co najmniej 5 charakterów przed @
-    rule3: 3. być unikalny
-
-  general:
-    rules_beginning: Wybierz kryteria wyszukiwania.
-    choose_request: Proszę wybrać
-    sort_request: Proszę wybrać
-  cars_params:
-    id: id
-    make: markę
-    model: model
-    year_from: od którego roku
-    year_to: do którego roku
-    price_from: cenę minimalną
-    price_to: cenę maksymalną
-    year: rok
-    odometer: odometer
-    price: cena
-    description: opis
-    date_added: data
-  sort_params:
-    option: metodę sortowania('date_added' - według daty |'price' - według ceny)
-    direction: sortowania ('desc'|'asc')
-  result_output:
-    result_title: Wyniki wyszukiwania
-    statistic_title: Statystyki wyszukiwania
-    total_quantity: Liczba wyników wyszukiwania
-    requests_quantity: Liczba wyszukiwań według określonych parametrów
-    result_fail: Przepraszamy, brak wyników z podanymi parametrami
-  user_searches:
-    searches_title: Twoje Wyszukiwania
-  add_rules:
-    add_rule_enter_message: Proszę wpisać
-    make: 
-      required: Wymagany
-      min_sym: Musi zawierać co najmniej 3 symbole
-      max_sym: Musi zawierać maksymalnie 50 symboli
-      content: Musi składać się wyłącznie z angielskich liter
-    model:
-      required: Wymagany
-      min_sym: Musi zawierać co najmniej 3 symbole
-      max_sym: Musi zawierać maksymalnie 50 symboli
-      content: Musi składać się wyłącznie z angielskich liter
-    year:
-      required: Wymagany
-      type: Musi być liczbą całkowitą
-      max_value: Musi nie być większy niż w bieżącym roku
-      min_value: Musi być większy niż 1900 rok
-    odometer:
-      required: Wymagany
-      type: Musi być liczbą całkowitą
-      min_value: Musi być >= 0
-    price:
-      required: Wymagany
-      type: Musi być liczbą całkowitą
-      min_value: Musi być >= 0
-    description:
-      required: Opcjonalny
-      type: Musi być tekstem
-      max_value: Musi nie mieć więcej niż 5000 symboli
-  admin_actions:
-    ask_id: Proszę wpisać id auta
-    edit_rule: Proszę wpisać nową wartość
-    edit_title_hint: Proszę wybrać regułę do edycji. Kiedy skończysz, wpisz „save”
-  ad_action:
-    ad_create: Reklama została pomyślnie utworzona
-    ad_update: Reklama została pomyślnie zaktualizowana
-    ad_delete: Reklama została pomyślnie usunięta
+      password_rules:
+        title: Hasło musi zawierać
+        rule1: 1. co najmniej 1 wielka litera
+        rule2: 2. co najmniej 2 znaki
+        rule3: 3. co najmniej 8 znaków
+        rule4: 4. nie więcej niż 20 znaków
+      email_rules:
+        title: Adres e-mail musi
+        rule1: 1. mieć format adresu e-mail
+        rule2: 2. mieć co najmniej 5 znaków przed @
+        rule3: 3. być wyjątkowym
+      advert_rules:
+        make:
+          title: Zasady marki
+          required: 1. musi być wypełnione
+          min_sym: 2. co najmniej 3 znaki
+          max_sym: 3. nie więcej niż 50 znaków
+          content: 4. składa się wyłącznie z liter łacińskich
+        model:
+          title: Zasady modelu
+          required: 1. musi być wypełnione
+          min_sym: 2. co najmniej 3 znaki
+          max_sym: 3. nie więcej niż 50 znaków
+          content: 4. składa się wyłącznie z liter łacińskich
+        year:
+          title: Zasady roku
+          required: 1. musi być wypełnione
+          type: 2. numeryczne
+          max_value: 3. nie później niż bieżący rok
+          min_value: 4. po 1990 r
+        odometer:
+          title: Zasady licznika kilometrów
+          required: 1. musi być wypełnione
+          type: 2. numeryczne
+          min_value: 3. wartość >= 0
+        price:
+          title: Zasady cenowe
+          required: 1. musi być wypełnione
+          type: 2. numeryczne
+          min_value:  3. wartość >= 0
+        description:
+          title: Zasady opisu
+          required: 1. opcjonalny 
+          type: 2. tekst
+          max_value: 3. nie więcej niż 5000 znaków
+    question:
+      user:
+        email: Wpisz swój adres e-mail
+        password: Wprowadź hasło
+      car:
+        edit: Wybierz opcię
+        make: Wybierz markę
+        model: Wybierz model
+        year_from: Proszę wybrać z którego roku
+        year_to: Proszę wybrać do którego roku
+        price_from: Wybierz cenę minimalną
+        price_to: Wybierz cenę maksymalną
+        create:
+          make: Wpisz markę
+          model:  Wpisz model
+          year:  Wpisz rok
+          price:  Wpisz cenę
+          odometer: Wpisz odometer
+          description:  Wpisz opis
+      sort:
+        option: Wybierz metodę sortowania(date_added|price)
+        direction: Wybierz kierunek sortowania(desc|asc)
+      advert:
+        id: Podaj identyfikator samochodu
+        edit_rule: Wprowadź nową wartość
+    error:
+      invalid_email: Adres email jest nieprawidłowy
+      exist_email: Adres e-mail jest już zarejestrowany
+      invalid_password: Hasło jest nieprawidłowe
+      no_exist_email: Adres e-mail nie jest zarejestrowany
+      invalid_car_rule: Wprowadzono nieprawidłowe dane
+      car_not_found: Nie znaleziono samochodu
+      error_searches: Nie przeprowadzono jeszcze żadnych wyszukiwań
+      result_fail: Przepraszamy, nie znaleziono żadnych wyników
+  cars:
+    title: Wyniki
+    cars_params:
+      id: id
+      make: Marka
+      model: Model
+      year_from: Rok od
+      year_to: Rok do
+      price_from: Cena od
+      price_to: Cena do
+      year: Rok
+      odometer: Odometer
+      price: Cena
+      description: Opis
+      date_added: Data dodania
+    edit:
+      title: Wybierz opcję do edycji. Po zakończeniu wpisz 'save'

@@ -12,6 +12,8 @@ class CarsController < ApplicationController
 
   def show(user)
     cars = SearchManager.new(user, database.all).call
+    return error('result_fail') if cars == []
+
     index(cars)
   end
 

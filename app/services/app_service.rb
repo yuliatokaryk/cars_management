@@ -34,7 +34,7 @@ class AppService
   end
 
   def hint_message
-    flash.hint([I18n.t('flash.hint.help')])
+    flash.help
   end
 
   def menu_request
