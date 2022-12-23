@@ -14,11 +14,11 @@ class CarsController < ApplicationController
   CAR_RULES = %w[make model year odometer price description].freeze
 
   def index
-    cars.index(database.all)
+    view.index(database.all)
   end
 
   def show(user)
-    SearchManager.new(user).call
+    SearchManager.new(user, database.all).call
   end
 
   def new
@@ -30,7 +30,7 @@ class CarsController < ApplicationController
 
   def edit
     id = target_id
-    return flash.error('car_not_found') unless database.find_by('id', id)
+    return error('car_not_found') unless database.find_by('id', id)
 
     params['id'] = id
     edit_manager
@@ -38,30 +38,26 @@ class CarsController < ApplicationController
 
   def create
     database.create(params)
-    flash.message(['ad_action.ad_create'])
+    message('advert.create')
   end
 
   def update
     database.update(params)
-    flash.message(['ad_action.ad_update'])
+    message('advert.update')
   end
 
   def destroy
     id = target_id
-    return flash.error('car_not_found') unless database.find_by('id', id)
+    return error('car_not_found') unless database.find_by('id', id)
 
     database.delete(id)
-    flash.message(['ad_action.ad_delete'])
+    message('advert.delete')
   end
 
   private
 
-  def database
-    @database ||= Car.new('cars')
-  end
-
   def target_id
-    flash.question(I18n.t('admin_actions.ask_id'))
+    question('advert.id')
     gets.chomp
   end
 
@@ -76,10 +72,10 @@ class CarsController < ApplicationController
   def add_car_rules
     CAR_RULES.each do |rule|
       rule_message(rule)
-      flash.question(I18n.t("cars_params.#{rule}"))
+      question("car.edit.#{rule}")
       value = gets.chomp
-      unless @validator.call(rule, value)
-        puts flash.error('invalid_car_rule')
+      unless validator.call(rule, value)
+        puts error('invalid_car_rule')
         break
       end
       save_value(rule, value)
@@ -95,13 +91,13 @@ class CarsController < ApplicationController
   def rule_message(rule)
     rules = []
     INPUT_RULES[rule].each do |el|
-      rules << I18n.t("add_rules.#{rule}.#{el}")
+      rules << I18n.t("flash.hint.advert_rules.#{rule}.#{el}")
     end
-    flash.hint(rules)
+    flash.hint(I18n.t("flash.hint.advert_rules.#{rule}.title"), rules)
   end
 
   def edit_manager
-    cars.edit(CAR_RULES)
+    view.edit(CAR_RULES)
     edit_input
   end
 
@@ -114,17 +110,21 @@ class CarsController < ApplicationController
 
   def edit_rule(index)
     rule = CAR_RULES[index.to_i]
-    flash.question("#{I18n.t('admin_actions.edit_rule')}. #{I18n.t("cars_params.#{rule}")}:")
+    question('advert.edit_rule')
     value = gets.chomp
     save_value(rule, value) if validator.call(rule, value)
     edit_manager
   end
 
-  def cars
-    @cars ||= Cars.new
+  def database
+    @database ||= Car.new('cars')
+  end
+
+  def view
+    @view ||= Cars.new
   end
 
   def validator
-    @validator = CarsValidator.new
+    @validator ||= CarsValidator.new
   end
 end
