@@ -17,7 +17,7 @@ namespace :db do
       num.to_i.times do
         new_cars << make_car
       end
-      db.record(cars + new_cars)
+      db.update(cars + new_cars)
     end
   end
 end
