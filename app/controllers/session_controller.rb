@@ -40,12 +40,12 @@ class SessionController < ApplicationController
   private
 
   def ask_email
-    flash.question(I18n.t('user.enter_email'))
+    question('user.email')
     @email = gets.chomp
   end
 
   def ask_password
-    flash.question(I18n.t('user.enter_password'))
+    question('user.password')
     @password = gets.chomp
   end
 
@@ -65,15 +65,11 @@ class SessionController < ApplicationController
   end
 
   def greeting
-    flash.message(["#{I18n.t('user.greeting')}, #{@current_user['email']}!"])
+    flash.message(["#{I18n.t('flash.message.user.greeting')}, #{@current_user['email']}!"])
   end
 
   def farewell
-    flash.message(["#{I18n.t('user.farewell')}, #{@current_user['email']}!"])
-  end
-
-  def error(error_message)
-    flash.error([I18n.t("flash.error.#{error_message}")])
+    flash.message(["#{I18n.t('flash.message.user.farewell')}, #{@current_user['email']}!"])
   end
 
   def users
