@@ -4,6 +4,7 @@
 class StatisticsController < ApplicationController
   def add
     database.find(@params['rules']) ? edit : new
+    show(@params['rules'])
   end
 
   def show(rules)
