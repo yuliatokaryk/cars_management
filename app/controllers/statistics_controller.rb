@@ -7,11 +7,11 @@ class StatisticsController < ApplicationController
     show(@params['rules'])
   end
 
+  private
+
   def show(rules)
     view.show(database.find(rules))
   end
-
-  private
 
   def new
     @search_element = {}
