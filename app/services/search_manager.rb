@@ -10,18 +10,12 @@ class SearchManager
   def call
     input_collector.call
     searcher.call
-    sorted_result = sorting_manager.call
     statistics_manager
     users_searches_controller if @user
-    Cars.new.index(sorted_result)
-    StatisticsController.new.show(input_collector.rules)
+    sorting_manager.call
   end
 
   private
-
-  def statistics_db
-    @statistics_db ||= Database.new('searches')
-  end
 
   def input_collector
     @input_collector ||= InputCollector.new
