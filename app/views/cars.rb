@@ -19,7 +19,7 @@ class Cars
 
     table = Terminal::Table.new title: I18n.t('cars.edit.title').to_s.colorize(:yellow) do |t|
       t << view_array
-      t << [*0..rules.length - 1]
+      t << [*1..rules.length]
     end
     puts table
   end

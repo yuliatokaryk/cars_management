@@ -16,7 +16,7 @@ class Car < ApplicationRecord
   def update(params)
     find_by('id', params['id'])
     params.each do |k, v|
-      @car[k] = v unless v.to_s.empty?
+      @car[k] = v
     end
     update_db(@cars)
   end
