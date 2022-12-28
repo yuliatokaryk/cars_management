@@ -38,11 +38,11 @@ class AppService
   end
 
   def menu_request
-    @user_choise = gets.chomp
+    @user_choice = gets.chomp
   end
 
   def admin_response
-    case @user_choise
+    case @user_choice
     when '0' then cars.new
     when '1' then cars.edit
     when '2' then cars.destroy
@@ -52,8 +52,8 @@ class AppService
   end
 
   def user_response
-    case @user_choise
-    when '0', '1' then sesion_option
+    case @user_choice
+    when '0', '1' then session_option
     when '2', '3' then cars_option
     when '4' then hint_message
     when '5' then return farewell_message
@@ -61,26 +61,26 @@ class AppService
     call
   end
 
-  def sesion_option
+  def session_option
     session.current_user ? user_menu : guest_menu
   end
 
   def user_menu
-    case @user_choise
+    case @user_choice
     when '0' then session.log_out
     when '1' then UsersSearchesController.new({ 'user' => session.current_user['email'] }).show
     end
   end
 
   def guest_menu
-    case @user_choise
+    case @user_choice
     when '0' then session.sign_up
     when '1' then session.log_in
     end
   end
 
   def cars_option
-    case @user_choise
+    case @user_choice
     when '2' then cars.show(session.current_user)
     when '3' then cars.index
     end
