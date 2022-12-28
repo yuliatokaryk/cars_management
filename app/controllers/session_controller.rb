@@ -48,7 +48,7 @@ class SessionController < ApplicationController
 
   def ask_password
     question('user.password')
-    @password = gets_password
+    @password = gets_password.chomp
   end
 
   def save_new_user
