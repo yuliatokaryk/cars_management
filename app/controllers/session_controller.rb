@@ -2,6 +2,8 @@
 
 # Session controller
 class SessionController < ApplicationController
+  include FancyGets
+
   attr_accessor :current_user
 
   PASSWORD_RULES = %i[rule1 rule2 rule3 rule4].freeze
@@ -46,7 +48,7 @@ class SessionController < ApplicationController
 
   def ask_password
     question('user.password')
-    @password = gets.chomp
+    @password = gets_password
   end
 
   def save_new_user

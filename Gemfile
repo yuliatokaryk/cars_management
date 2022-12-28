@@ -20,3 +20,5 @@ gem 'rubocop-rails', '~> 2.17'
 gem 'rubocop-rake', '~> 0.6.0'
 gem 'rubocop-rspec', '~> 2.15'
 gem 'terminal-table', '~> 3.0'
+
+gem "fancy_gets", "~> 0.1.10"

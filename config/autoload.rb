@@ -8,6 +8,7 @@ require 'i18n'
 require 'bcrypt'
 require 'rake'
 require 'ffaker'
+require 'fancy_gets'
 require_relative 'locale_setter'
 require_relative '../lib/database'
 
