@@ -2,8 +2,9 @@
 
 # service to validate password
 class PasswordValidator
+  PASSWORD_REGEX = /^(?=.*[A-Z])(?=(.*[@$!%*#?&]){2}).{8,20}$/
+
   def call(password)
-    reg = /^(?=.*[A-Z])(?=(.*[@$!%*#?&]){2}).{8,20}$/
-    password.match?(reg)
+    password.match?(PASSWORD_REGEX)
   end
 end

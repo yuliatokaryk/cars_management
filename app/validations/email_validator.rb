@@ -2,8 +2,9 @@
 
 # service to validate email
 class EmailValidator
+  EMAIL_REGEX = /^\S{5,}@[\w​.]+\w+$/
+
   def call(email)
-    reg = /^\S{5,}@[\w​.]+\w+$/
-    email.match?(reg)
+    email.match?(EMAIL_REGEX)
   end
 end
