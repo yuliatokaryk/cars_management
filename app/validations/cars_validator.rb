@@ -41,6 +41,7 @@ class CarsValidator
   end
 
   def description_validator(desc)
-    desc.length <= 5000 || desc == ''
+    max_length = 5000
+    desc.length <= max_length || desc == ''
   end
 end
