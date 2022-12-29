@@ -11,6 +11,8 @@ class CarManager
 
   CAR_RULES = %w[make model year odometer price description].freeze
 
+  CAR_PARAMS_LENGTH = 8
+
   def initialize(car = {})
     @car = car
   end
@@ -19,7 +21,7 @@ class CarManager
     add_id
     add_rules
     add_current_data
-    @car.length == 8 ? @car : nil
+    @car.length == CAR_PARAMS_LENGTH ? @car : nil
   end
 
   def edit
