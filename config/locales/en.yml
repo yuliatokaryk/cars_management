@@ -53,9 +53,9 @@ en:
         model:
           title: Model rules
           required: 1. required
-          min_sym: 2. should have at least 3 symbols
+          min_sym: 2. should have at least 2 symbols
           max_sym: 3. should have at most 50 symbols
-          content: 3. should consists only of English letters
+          content: 4. should consists of English letters or numbers
         year:
           title: Year rules
           required: 1. equired
@@ -71,7 +71,7 @@ en:
           title: Price rules
           required: 1. required
           type: 2. should be an integer
-          min_value: 3. should be >= 0
+          min_value: 3. should be > 0
         description:
           title: Description rules
           required: 1. optional
@@ -111,6 +111,32 @@ en:
       car_not_found: Car not found
       error_searches: You haven't made any searches yet.
       result_fail: Sorry, there no results
+      make:
+        required: Make is required
+        min_sym: Make should have at least 3 symbols
+        max_sym: Make should have at most 50 symbols
+        content: Make should consists only of English letters
+      model:
+        required: Model is required
+        min_sym: Model should have at least 2 symbols
+        max_sym: Model should have at most 50 symbols
+        content: Model should consists only of English letters or numbers
+      year:
+        required: Year is equired
+        type: Year should be an integer
+        max_value: Year should be not greater than current year
+        min_value: Year should be greater than 1900 year
+      odometer:
+        required: Odometer is required
+        type: Odometer should be an integer
+        min_value: Odometer should be >= 0
+      price:
+        required: Price id required
+        type: Price should be an integer
+        min_value: Price should be > 0
+      description:
+        type: Description should be a text
+        max_value: Description should have no more than 5000 symbols
   cars:
     title: Results
     cars_params:

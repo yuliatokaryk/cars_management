@@ -54,7 +54,7 @@ pl:
         model:
           title: Zasady modelu
           required: 1. musi być wypełnione
-          min_sym: 2. co najmniej 3 znaki
+          min_sym: 2. co najmniej 2 znaki
           max_sym: 3. nie więcej niż 50 znaków
           content: 4. składa się wyłącznie z liter łacińskich
         year:
@@ -72,7 +72,7 @@ pl:
           title: Zasady cenowe
           required: 1. musi być wypełnione
           type: 2. numeryczne
-          min_value:  3. wartość >= 0
+          min_value:  3. wartość > 0
         description:
           title: Zasady opisu
           required: 1. opcjonalny 
@@ -112,6 +112,32 @@ pl:
       car_not_found: Nie znaleziono samochodu
       error_searches: Nie przeprowadzono jeszcze żadnych wyszukiwań
       result_fail: Przepraszamy, nie znaleziono żadnych wyników
+      make:
+        required: Wartość musi zostać wypełniona
+        min_sym: Marka musi mieć co najmniej 3 znaki
+        max_sym: Marka musi mieć nie więcej niż 50 znaków
+        content: Marka musi składać się z liter łacińskich
+      model:
+        required: Wartość musi zostać wypełniona
+        min_sym: Model musi mieć co najmniej 2 znaki
+        max_sym: Model musi mieć nie więcej niż 50 znaków
+        content: Model musi składać się z liter łacińskich
+      year:
+        required: Wartość musi zostać wypełniona
+        type: Wartość musi być numeryczna
+        max_value: Rok nie później niż bieżący
+        min_value: Rok po 1990 r
+      odometer:
+        required: Wartość musi zostać wypełniona
+        type: Wartość musi być numeryczna
+        min_value: Wartość musi być >= 0
+      price:
+        required: Wartość musi zostać wypełniona
+        type: Wartość musi być numeryczna
+        min_value: Wartość musi być > 0
+      description:
+        type: Wartość musi być tekstem
+        max_value: Wartość musi mieć nie więcej niż 5000 znaków
   cars:
     title: Wyniki
     cars_params:
