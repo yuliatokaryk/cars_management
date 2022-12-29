@@ -32,7 +32,8 @@ class CarsValidator
   end
 
   def odometer_validator(odometer)
-    odometer.to_i.positive?
+    reg = /^[0-9]*$/
+    odometer.match?(reg)
   end
 
   def price_validator(price)
