@@ -7,21 +7,21 @@ class UserSearch < ApplicationRecord
   end
 
   def create(params)
-    users_searchs = all
-    users_searchs << params
-    update_db(users_searchs)
+    users_searches = all
+    users_searches << params
+    update_db(users_searches)
   end
 
   def update(params) # rubocop:disable Metrics/AbcSize
-    users_searchs = all
-    current_user_result = users_searchs.find { |user| user['user'] == params['user'] }
+    users_searches = all
+    current_user_result = users_searches.find { |user| user['user'] == params['user'] }
     current_user_result['search_rules'].each do |search|
       if search[0] == params['search_rules'][0][0]
         search << params['search_rules'][0][1]
-        return update_db(users_searchs)
+        return update_db(users_searches)
       end
     end
     current_user_result['search_rules'] << params['search_rules'][0]
-    update_db(users_searchs)
+    update_db(users_searches)
   end
 end
