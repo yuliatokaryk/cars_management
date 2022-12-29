@@ -2,7 +2,7 @@
 
 # Menu controller
 class MenuController < ApplicationController
-  MENU_OPTIONS = %i[search_car show_cars help exit].freeze
+  MENU_OPTIONS = %i[search_car show_cars fast_search help exit].freeze
   GUEST_OPTIONS = %i[sign_up log_in].freeze
   USER_OPTIONS = %i[log_out my_searches].freeze
   ADMIN_OPTIONS = %i[create_ad update_ad delete_ad log_out].freeze

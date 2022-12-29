@@ -54,9 +54,9 @@ class AppService
   def user_response
     case @user_choice
     when '0', '1' then session_option
-    when '2', '3' then cars_option
-    when '4' then hint_message
-    when '5' then return farewell_message
+    when '2', '3', '4' then cars_option
+    when '5' then hint_message
+    when '6' then return farewell_message
     end
     call
   end
@@ -81,8 +81,9 @@ class AppService
 
   def cars_option
     case @user_choice
-    when '2' then cars.show(session.current_user)
+    when '2' then cars.show(session.current_user, false)
     when '3' then cars.index
+    when '4' then cars.show(session.current_user, true)
     end
   end
 
