@@ -29,3 +29,7 @@ bundle install
 ```bash
 ruby index.rb
 ```
+
+#### To log in as admin use
+  email: admin@gmail.com
+  password: Password!!
