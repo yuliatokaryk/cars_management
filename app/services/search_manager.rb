@@ -2,6 +2,8 @@
 
 # Search manager class
 class SearchManager
+  DATE_FORMAT = '%d/%m/%Y'
+
   def initialize(user, cars)
     @user = user
     @cars = cars
@@ -34,7 +36,7 @@ class SearchManager
   end
 
   def users_searches_controller
-    d = Time.now.strftime('%d/%m/%Y')
+    d = Time.now.strftime(DATE_FORMAT)
     user = @user['email']
     UsersSearchesController.new({ 'user' => user, 'search_rules' => [[{ 'date' => d }, input_collector.rules]] }).save
   end
