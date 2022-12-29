@@ -43,8 +43,8 @@ class CarManager
       rule_message(rule)
       flash.question(I18n.t("flash.question.car.create.#{rule}"))
       value = gets.chomp
-      unless validator.call(rule, value)
-        puts flash.error([I18n.t('flash.error.invalid_car_rule')])
+      unless validator.call(rule, value) == true
+        puts error_message(rule, validator.call(rule, value))
         break
       end
       save_value(rule, value)
@@ -75,6 +75,13 @@ class CarManager
       rules << I18n.t("flash.hint.advert_rules.#{rule}.#{el}")
     end
     flash.hint(I18n.t("flash.hint.advert_rules.#{rule}.title"), rules)
+  end
+
+  def error_message(rule, errors)
+    errors.each_with_index do |error, index|
+      errors[index] = I18n.t("flash.error.#{rule}.#{error}")
+    end
+    flash.error(errors)
   end
 
   def validator
