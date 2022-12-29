@@ -59,7 +59,7 @@ class CarsValidator
     errors = []
     errors << 'required' if odometer.strip == ''
     errors << 'type' unless odometer.match?(REGEX_ONLY_NUMBERS)
-    errors << 'min_value' unless odometer.to_i.zero? || odometer.to_i.posivive?
+    errors << 'min_value' unless odometer.to_i.zero? || odometer.to_i.positive?
     return true if errors.length.zero?
 
     errors
