@@ -2,6 +2,9 @@
 
 # service to validate cars rules
 class CarsValidator
+  MAX_DESCRIPTION_LENGTH = 5000
+  MIN_YEAR = 1900
+
   def call(rule, value)
     case rule
     when 'make' then make_validator(value)
@@ -27,8 +30,7 @@ class CarsValidator
 
   def year_validator(year)
     current_year = Time.new.year
-    min_year = 1900
-    year.to_i.positive? && year.to_i.between?(min_year, current_year)
+    year.to_i.positive? && year.to_i.between?(MIN_YEAR, current_year)
   end
 
   def odometer_validator(odometer)
@@ -41,7 +43,6 @@ class CarsValidator
   end
 
   def description_validator(desc)
-    max_length = 5000
-    desc.length <= max_length || desc == ''
+    desc.length <= MAX_DESCRIPTION_LENGTH || desc == ''
   end
 end
