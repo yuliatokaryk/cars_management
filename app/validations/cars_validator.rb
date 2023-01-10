@@ -4,14 +4,15 @@
 class CarsValidator
   MAX_DESCRIPTION_LENGTH = 5000
   MIN_YEAR = 1900
+  MIN_CHAR = 2
+  MAX_CHAR = 50
   REGEX_ONLY_NUMBERS = /^[0-9]*$/
   REGEX_ONLY_LETTERS = /^[a-zA-Z]*$/
   REGEX_LETTERS_NUMBERS = /^[a-zA-Z0-9]*$/
 
   def call(rule, value)
     case rule
-    when 'make' then make_validator(value)
-    when 'model' then model_validator(value)
+    when 'make', 'model' then make__model_validator(value)
     when 'year' then year_validator(value)
     when 'odometer' then odometer_validator(value)
     when 'price' then price_validator(value)
@@ -21,23 +22,12 @@ class CarsValidator
 
   private
 
-  def make_validator(make)
+  def make__model_validator(value)
     errors = []
-    errors << 'required' if make.strip == ''
-    errors << 'min_sym' if make.length < 3
-    errors << 'max_sym' if make.length > 50
-    errors << 'content' unless make.match?(REGEX_ONLY_LETTERS)
-    return true if errors.length.zero?
-
-    errors
-  end
-
-  def model_validator(model)
-    errors = []
-    errors << 'required' if model.strip == ''
-    errors << 'min_sym' if model.length < 2
-    errors << 'max_sym' if model.length > 50
-    errors << 'content' unless model.match?(REGEX_LETTERS_NUMBERS)
+    errors << 'required' if value.strip == ''
+    errors << 'min_sym' if value.length < MIN_CHAR
+    errors << 'max_sym' if value.length > MAX_CHAR
+    errors << 'content' unless value.match?(REGEX_LETTERS_NUMBERS)
     return true if errors.length.zero?
 
     errors
