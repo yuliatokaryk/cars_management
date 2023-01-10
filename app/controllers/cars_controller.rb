@@ -10,11 +10,14 @@ class CarsController < ApplicationController
     view.index(cars)
   end
 
-  def show(user)
-    cars = SearchManager.new(user, database.all).call
+  def show(user, fast)
+    cars = SearchManager.new(user, database.all).fast_search if fast
+
+    cars = SearchManager.new(user, database.all).call unless fast
+
     return error('result_fail') if cars == []
 
-    index(cars)
+    index(cars) if cars
   end
 
   def new

@@ -7,6 +7,7 @@ uk:
     my_searches: Мої пошуки
     search_car: Знайти авто
     show_cars: Переглянути всі авто
+    fast_search: Скористатися швидким пошуком
     help: Довідка
     exit: Закрити додаток
     create_ad: Створити оголошення
@@ -31,8 +32,14 @@ uk:
       user:
         greeting: Вітаємо
         farewell: До нової зустрічі
-    hint: 
-      help: Welcome to the car search application. You can view the list of all cars, or find a car according to the specified parameters. If you have an account, you can view your search history.
+    hint:
+      fast_search:
+        title: Для успішного швидкого пошуку
+        hint1: 1. використовуй формат 'make=value, model=value etc'
+        hint2: 2. введи make, model як слова
+        hint3: 3. введи year_from, year_to використовуючи snake case
+        hint4: 4. введи price_from, price_to використовуючи snake case
+        hint5: 5. використовуй маленькі літери для назв параметрів
       password_rules:
         title: Пароль повинен містити
         rule1: 1. щонайменше 1 велику літеру

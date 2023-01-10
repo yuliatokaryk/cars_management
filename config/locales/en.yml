@@ -7,6 +7,7 @@ en:
     my_searches: My searches
     search_car: Search a car
     show_cars: Show all cars
+    fast_search: Use fast search
     help: Help
     exit: Exit
     create_ad: Create an Advertisement
@@ -31,7 +32,14 @@ en:
       user:
         greeting: Hello
         farewell: See you later
-    hint: 
+    hint:
+      fast_search:
+        title: For a successful quick search
+        hint1: 1. use format make=value, model=value etc
+        hint2: 2. write make, model as words
+        hint3: 3. write  year_from, year_to using snake case
+        hint4: 4. write  price_from, price_to using snake case
+        hint5: 5. use lowercase letter for rules name
       password_rules:
         title: Password must consist of
         rule1: 1. at least 1 capital letter

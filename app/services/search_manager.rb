@@ -9,6 +9,15 @@ class SearchManager
     @cars = cars
   end
 
+  def fast_search
+    return unless input_collector.fast_value
+
+    searcher.call
+    statistics_manager
+    users_searches_controller if @user
+    searcher.cars_list
+  end
+
   def call
     input_collector.call
     searcher.call

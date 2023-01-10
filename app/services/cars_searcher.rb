@@ -4,7 +4,7 @@
 class CarsSearcher
   attr_reader :total_quantity, :search_rules, :cars_list
 
-  def initialize(cars, rules)
+  def initialize(cars, rules = {})
     @cars_list = cars
     @search_rules = rules
   end
@@ -15,6 +15,11 @@ class CarsSearcher
     value_checker('year')
     value_checker('price')
     count_total_quantity
+  end
+
+  def assign_values(values)
+    @search_rules = values
+    call
   end
 
   private

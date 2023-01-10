@@ -7,6 +7,7 @@ pl:
     my_searches: Moje wyszukiwania
     search_car: Znajdź samochód
     show_cars: Zobacz wszystkie samochody
+    fast_search: Skorzystaj z szybkiego wyszukiwania
     help: Pomoc
     exit: Zamknij aplikację
     create_ad: Utwórz reklamę
@@ -31,8 +32,14 @@ pl:
       user:
         greeting: Witamy
         farewell: Do zobaczenia
-    hint: 
-      help: Witamy w aplikacji do wyszukiwania samochodów. Możesz wyświetlić listę wszystkich samochodów lub znaleźć samochód zgodnie z określonymi parametrami. Jeśli masz konto, możesz przeglądać swoją historię wyszukiwania.
+    hint:
+      fast_search:
+        title: Dla pomyślnego szybkiego wyszukiwania
+        hint1: 1. użyj formatu 'make=value, model=value etc'
+        hint2: 2. napisz make, model jako słowa
+        hint3: 3. napisz  year_from, year_to jako snake case
+        hint4: 4. napisz  price_from, price_to jako snake case
+        hint5: 5. użyj małej litery dla nazwy reguły
       password_rules:
         title: Hasło musi zawierać
         rule1: 1. co najmniej 1 wielka litera
