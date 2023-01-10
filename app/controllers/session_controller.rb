@@ -2,6 +2,8 @@
 
 # Session controller
 class SessionController < ApplicationController
+  include FancyGets
+
   attr_accessor :current_user
 
   PASSWORD_RULES = %i[rule1 rule2 rule3 rule4].freeze
@@ -9,26 +11,24 @@ class SessionController < ApplicationController
   @current_user = nil
 
   def sign_up
-    email_rules
+    rules_message('email_rules', EMAIL_RULES)
     ask_email
-    return error_message('invalid_email') unless email_validator(@email)
-    return error_message('exist_email') if UsersController.new.show('email', @email)
+    return error('invalid_email') unless email_validator.call(@email)
+    return error('exist_email') if users.find_by('email', @email)
 
-    password_rules
-    ask_password
-    return error_message('invalid_password') unless password_validator(@password)
+    rules_message('password_rules', PASSWORD_RULES)
+    return error('invalid_password') unless password_validator.call(ask_password)
 
     save_new_user
     greeting
   end
 
   def log_in
-    ask_email
-    user = UsersController.new.show('email', @email)
-    return error_message('no_exist_email') unless user
+    user = users.find_by('email', ask_email)
 
-    ask_password
-    return error_message('invalid_password') unless UsersController.new.check_password(user, @password)
+    return error('no_exist_email') unless user
+
+    return error('invalid_password') unless user['password'] == ask_password
 
     @current_user = user
     greeting
@@ -42,61 +42,47 @@ class SessionController < ApplicationController
   private
 
   def ask_email
-    puts I18n.t('user.enter_email').colorize(:blue)
+    question('user.email')
     @email = gets.chomp
   end
 
-  def email_rules
-    table = Terminal::Table.new title: I18n.t('email_rules.email_hint').to_s.colorize(:yellow) do |t|
-      EMAIL_RULES.each do |rule|
-        t << [I18n.t("email_rules.#{rule}").colorize(:light_blue)]
-      end
-    end
-    puts table
-  end
-
   def ask_password
-    puts I18n.t('user.enter_password').colorize(:blue)
-    @password = gets.chomp
-  end
-
-  def password_rules
-    table = Terminal::Table.new title: I18n.t('password_rules.password_hint').to_s.colorize(:yellow) do |t|
-      PASSWORD_RULES.each do |rule|
-        t << [I18n.t("password_rules.#{rule}").colorize(:light_blue)]
-      end
-    end
-    puts table
+    question('user.password')
+    @password = gets_password.chomp
   end
 
   def save_new_user
     password = BCrypt::Password.create(@password)
-    user = UsersController.new({ 'email' => @email, 'password' => password, 'admin' => false })
-    user.create
-    @current_user = user.params
+    user = { 'email' => @email, 'password' => password, 'admin' => false }
+    users.create(user)
+    @current_user = user
+  end
+
+  def rules_message(option, rules)
+    rules_array = []
+    rules.each do |rule|
+      rules_array << I18n.t("flash.hint.#{option}.#{rule}")
+    end
+    flash.hint(I18n.t("flash.hint.#{option}.title"), rules_array)
   end
 
   def greeting
-    rows = [["#{I18n.t('user.greeting')}, #{@current_user['email']}!".colorize(:green)]]
-    puts Terminal::Table.new rows: rows
+    flash.message(["#{I18n.t('flash.message.user.greeting')}, #{@current_user['email']}!"])
   end
 
   def farewell
-    rows = [["#{I18n.t('user.farewell')}, #{@current_user['email']}!".colorize(:green)]]
-    puts Terminal::Table.new rows: rows
+    flash.message(["#{I18n.t('flash.message.user.farewell')}, #{@current_user['email']}!"])
   end
 
-  def error_message(error)
-    puts I18n.t("errors.#{error}").colorize(:red)
+  def users
+    @users ||= User.new('users')
   end
 
-  def email_validator(email)
-    reg = /^\S{5,}@[\w​.]+\w+$/
-    email.match?(reg)
+  def password_validator
+    @password_validator ||= PasswordValidator.new
   end
 
-  def password_validator(password)
-    reg = /^(?=.*[A-Z])(?=(.*[@$!%*#?&]){2}).{8,20}$/
-    password.match?(reg)
+  def email_validator
+    @email_validator ||= EmailValidator.new
   end
 end

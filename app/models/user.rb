@@ -1,25 +1,14 @@
 # frozen_string_literal: true
 
 # User Model
-class User
-  def all
-    @users = database.fetch
-  end
-
+class User < ApplicationRecord
   def find_by(param, value)
-    all
-    @users.find { |user| user[param] == value }
+    all.find { |user| user[param] == value }
   end
 
-  def update(user)
-    all
-    @users << user
-    database.record(@users)
-  end
-
-  private
-
-  def database
-    Database.new('users')
+  def create(user)
+    users = all
+    users << user
+    update_db(users)
   end
 end

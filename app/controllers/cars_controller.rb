@@ -4,125 +4,66 @@
 class CarsController < ApplicationController
   attr_accessor :params
 
-  INPUT_RULES = { 'make' => %w[required min_sym max_sym content],
-                  'model' => %w[required min_sym max_sym content],
-                  'year' => %w[required type max_value min_value],
-                  'odometer' => %w[required type min_value],
-                  'price' => %w[required type min_value],
-                  'description' => %w[required type max_value] }.freeze
-
   CAR_RULES = %w[make model year odometer price description].freeze
 
-  def initialize
-    super
-    @validator = CarsValidator.new
+  def index(cars = database.all)
+    view.index(cars)
   end
 
-  def show_all
-    database.all
+  def show(user)
+    cars = SearchManager.new(user, database.all).call
+    return error('result_fail') if cars == []
+
+    index(cars)
   end
 
   def new
-    add_car_id
-    add_car_rules
-    add_current_data
-    create if params.length == 8
+    car = CarManager.new.create
+    create(car) if car
   end
 
   def edit
     id = target_id
-    return error_message('errors.car_not_found') unless database.find_by('id', id)
+    car = database.find_by('id', id)
+    return error('car_not_found') unless car
 
-    params['id'] = id
-    edit_manager
+    view.index([car])
+    view.edit(CAR_RULES)
+
+    edited_car = CarManager.new(car).edit
+    update(edited_car)
   end
 
-  def create
-    database.create(params)
-    success_message('ad_action.ad_create')
+  def create(car)
+    database.create(car)
+    message('advert.create')
   end
 
-  def update
-    database.update(params)
-    success_message('ad_action.ad_update')
+  def update(car)
+    database.update(car)
+    message('advert.update')
   end
 
   def destroy
     id = target_id
-    return error_message('errors.car_not_found') unless database.find_by('id', id)
+    return error('car_not_found') unless database.find_by('id', id)
 
     database.delete(id)
-    success_message('ad_action.ad_delete')
+    message('advert.delete')
   end
 
   private
 
-  def database
-    Car.new('cars')
-  end
-
   def target_id
-    puts "#{I18n.t('admin_actions.ask_id')}:".colorize(:blue)
+    question('advert.id')
     gets.chomp
   end
 
-  def add_car_id
-    params['id'] = Time.now.to_i.to_s
+  def view
+    @view ||= Cars.new
   end
 
-  def add_current_data
-    params['date_added'] = Time.now.strftime('%d/%m/%Y')
-  end
-
-  def add_car_rules
-    CAR_RULES.each do |rule|
-      rule_message(rule)
-      puts "#{I18n.t("cars_params.#{rule}")}:".capitalize.colorize(:blue)
-      value = gets.chomp
-      unless @validator.call(rule, value)
-        puts error_message('errors.invalid_car_rule')
-        break
-      end
-      save_value(rule, value)
-    end
-  end
-
-  def save_value(rule, value)
-    numeric_value = %w[year odometer price]
-    value = value.to_i if numeric_value.include? rule
-    params[rule] = value
-  end
-
-  def rule_message(rule)
-    table = Terminal::Table.new title: I18n.t("cars_params.#{rule}").to_s.capitalize.colorize(:yellow) do |t|
-      INPUT_RULES[rule].each do |el|
-        t << [I18n.t("add_rules.#{rule}.#{el}").colorize(:light_blue)]
-      end
-    end
-    puts table
-  end
-
-  def edit_manager
-    table = Terminal::Table.new title: I18n.t('admin_actions.edit_title_hint').to_s.colorize(:yellow) do |t|
-      t << CAR_RULES
-      t << [*0..CAR_RULES.length - 1]
-    end
-    puts table
-    edit_input
-  end
-
-  def edit_input
-    input = gets.chomp
-    return update if input == 'save'
-
-    input.to_i.between?(0, CAR_RULES.length - 1) ? edit_rule(input) : edit_manager
-  end
-
-  def edit_rule(index)
-    rule = CAR_RULES[index.to_i]
-    puts "#{I18n.t('admin_actions.edit_rule')}. #{I18n.t("cars_params.#{rule}")}:".colorize(:blue)
-    value = gets.chomp
-    save_value(rule, value) if @validator.call(rule, value)
-    edit_manager
+  def database
+    @database ||= Car.new('cars')
   end
 end

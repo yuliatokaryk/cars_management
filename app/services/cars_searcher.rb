@@ -4,8 +4,8 @@
 class CarsSearcher
   attr_reader :total_quantity, :search_rules, :cars_list
 
-  def initialize(db, rules)
-    @cars_list = db.fetch
+  def initialize(cars, rules)
+    @cars_list = cars
     @search_rules = rules
   end
 

@@ -1,111 +1,156 @@
 en:
-  user:
-    enter_email: Enter email address
-    enter_password: Enter password
-    greeting: Hello
-    farewell: See you later
-  errors:
-    invalid_email: The email address is not valid
-    exist_email: The email address is already registered 
-    invalid_password: The password is not valid
-    no_exist_email: The email address not registered
-    invalid_car_rule: Input is not valid
-    car_not_found: Car not found
-  password_rules:
-    password_hint: Password must consist of
-    rule1: 1. at least 1 capital letter
-    rule2: 2. at least 2 special characters
-    rule3: 3. at least 8 symbols
-    rule4: 4. no more than 20 symbols
-  email_rules:
-    email_hint: Email must
-    rule1: 1. have email-type format
-    rule2: 2. have at least 5 symbols before @
-    rule3: 3. be unique
-  session_menu:
+  menu:
+    title: Click the number of the selected option
     sign_up: Sign up
     log_in: Log in
     log_out: Log out
     my_searches: My searches
-  menu:
-    welcome_message: Hello! Welcome to Cars Searcher!
-    help: This is a car finder app. You can view the list of all available cars, or set search parameters.
-    end: Goodbye!
-    main_menu: MAIN MENU
-    hint: Click the number of the selected option
-  menu_options:
     search_car: Search a car
     show_cars: Show all cars
     help: Help
     exit: Exit
-  general:
-    rules_beginning: Please select search rules.
-    choose_request: Pleace choose
-    sort_request: Please choose sort
-  cars_params:
-    id: id
-    make: make
-    model: model
-    year_from: year_from
-    year_to: year_to
-    price_from: price_from
-    price_to: price_to
-    year: year
-    odometer: odometer
-    price: price
-    description: description
-    date_added: date_added
-  sort_params:
-    option: option(date_added|price)
-    direction: direction(desc|asc)
-  result_output:
-    result_title: Results
-    statistic_title: Statistic
-    total_quantity: Total Quantity
-    requests_quantity: Requests Quantity
-    result_fail: Sorry, there no results
-  user_searches:
-    error_message: You haven't made any searches yet.
-    searches_title: Your Searches
-  adnin_menu_options: 
     create_ad: Create an Advertisement
     update_ad: Update an Advertisement
     delete_ad: Delete an Advertisement
-    log_out: Log out
-  add_rules:
-    add_rule_enter_message: Please enter
-    make: 
-      required: Required
-      min_sym: Should have at least 3 symbols
-      max_sym: Should have at most 50 symbols
-      content: Should consists only of English letters
-    model:
-      required: Required
-      min_sym: Should have at least 3 symbols
-      max_sym: Should have at most 50 symbols
-      content: Should consists only of English letters
-    year:
-      required: Required
-      type: Should be an integer
-      max_value: Should be not greater than current year
-      min_value: Should be greater than 1900 year
-    odometer:
-      required: Required
-      type: Should be an integer
-      min_value: Should be >= 0
-    price:
-      required: Required
-      type: Should be an integer
-      min_value: Should be >= 0
-    description:
-      required: optional
-      type: Should be a String
-      max_value: Should have no more than 5000 symbols
-  admin_actions:
-    ask_id: Please, write cars id
-    edit_rule: Please, write new value
-    edit_title_hint: Please, select rule to edit. When you done type 'save'
-  ad_action:
-    ad_create: The ad was successfully created
-    ad_update: The ad was successfully updated
-    ad_delete: The ad was successfully removed
+  statistics:
+    title: Statistic
+    total_quantity: Total Quantity
+    requests_quantity: Requests Quantity
+  flash:
+    help: 
+      hint_1: Read the menu options;
+      hint_2: Enter the number of the selected one;
+      hint_3: Use your profile to save search history.
+    message:
+      welcome_message: Hello! Welcome to Cars Searcher!
+      farewell_message: Goodbye!
+      advert:
+        create: The ad was successfully created
+        update: The ad was successfully updated
+        delete: The ad was successfully removed
+      user:
+        greeting: Hello
+        farewell: See you later
+    hint: 
+      password_rules:
+        title: Password must consist of
+        rule1: 1. at least 1 capital letter
+        rule2: 2. at least 2 special characters
+        rule3: 3. at least 8 symbols
+        rule4: 4. no more than 20 symbols
+      email_rules:
+        title: Email must
+        rule1: 1. have email-type format
+        rule2: 2. have at least 5 symbols before @
+        rule3: 3. be unique
+      advert_rules:
+        make:
+          title: Make rules
+          required: 1. required
+          min_sym: 2. should have at least 3 symbols
+          max_sym: 3. should have at most 50 symbols
+          content: 4. should consists only of English letters
+        model:
+          title: Model rules
+          required: 1. required
+          min_sym: 2. should have at least 2 symbols
+          max_sym: 3. should have at most 50 symbols
+          content: 4. should consists of English letters or numbers
+        year:
+          title: Year rules
+          required: 1. equired
+          type: 2. should be an integer
+          max_value: 3. should be not greater than current year
+          min_value: 4. should be greater than 1900 year
+        odometer:
+          title: Odometer rules
+          required: 1. required
+          type: 2. should be an integer
+          min_value: 3. should be >= 0
+        price:
+          title: Price rules
+          required: 1. required
+          type: 2. should be an integer
+          min_value: 3. should be > 0
+        description:
+          title: Description rules
+          required: 1. optional
+          type: 2. should be a String
+          max_value: 3. should have no more than 5000 symbols
+    question:
+      user:
+        email: Enter email address
+        password: Enter password
+      car:
+        edit: Enter selected option
+        make: Please select make
+        model: Please select model
+        year_from: Please select year from
+        year_to: Please select year to
+        price_from: Please select minimum price
+        price_to: Please select maximum price
+        create:
+          make: Please enter make
+          model:  Please enter model
+          year:  Please enter year
+          price:  Please enter price
+          odometer: Please enter odometer
+          description:  Please enter description
+      sort:
+        option: Please choose sort option(date_added|price)
+        direction: Please choose sort direction(desc|asc)
+      advert:
+        id: Please, write cars id
+        edit_rule: Please, write new value
+    error:
+      invalid_email: The email address is not valid
+      exist_email: The email address is already registered 
+      invalid_password: The password is not valid
+      no_exist_email: The email address not registered
+      invalid_car_rule: Input is not valid
+      car_not_found: Car not found
+      error_searches: You haven't made any searches yet.
+      result_fail: Sorry, there no results
+      make:
+        required: Make is required
+        min_sym: Make should have at least 3 symbols
+        max_sym: Make should have at most 50 symbols
+        content: Make should consists only of English letters
+      model:
+        required: Model is required
+        min_sym: Model should have at least 2 symbols
+        max_sym: Model should have at most 50 symbols
+        content: Model should consists only of English letters or numbers
+      year:
+        required: Year is equired
+        type: Year should be an integer
+        max_value: Year should be not greater than current year
+        min_value: Year should be greater than 1900 year
+      odometer:
+        required: Odometer is required
+        type: Odometer should be an integer
+        min_value: Odometer should be >= 0
+      price:
+        required: Price id required
+        type: Price should be an integer
+        min_value: Price should be > 0
+      description:
+        type: Description should be a text
+        max_value: Description should have no more than 5000 symbols
+  cars:
+    title: Results
+    cars_params:
+      id: id
+      make: make
+      model: model
+      year_from: year from
+      year_to: year to
+      price_from: price from
+      price_to: price to
+      year: year
+      odometer: odometer
+      price: price
+      description: description
+      date_added: date added
+    edit:
+      title: Please, select rule to edit. When you done type 'save'
